@@ -1,0 +1,11 @@
+@defer (when products.length) {
+  <div class="products">
+    @for (product of products; track product.id) {
+      <app-product-list-item [product]="product"/>
+    }
+  </div>
+} @loading (minimum 1000ms) {
+  <mat-progress-bar mode="indeterminate"/>
+} @error () {
+  <p>Error loading products</p>
+}
