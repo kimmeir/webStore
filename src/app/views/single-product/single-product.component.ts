@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from '../../services/products/products.typing';
-import { Observable } from 'rxjs';
 import { ProductsService } from '../../services/products/products.service';
 import { JsonPipe } from '@angular/common';
 
