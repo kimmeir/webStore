@@ -1,0 +1,21 @@
+<mat-card
+  class="products-item pointer"
+  (click)="clickHandler()"
+>
+  <div class="products-item-image">
+    <img
+      ngSrc="{{item.image}}"
+      alt="{{item.title}}"
+      mat-card-image
+      fill>
+  </div>
+  <mat-card-content>
+    <mat-card-title class="products-item-title ellipsis">{{ item.title | titlecase }}</mat-card-title>
+    @if (item.description) {
+      <mat-card-subtitle class="products-item-subtitle ellipsis">{{ item.description }}</mat-card-subtitle>
+    }
+    @if (item.price) {
+      <span class="products-item-price">{{ item.price | currency }}</span>
+    }
+  </mat-card-content>
+</mat-card>

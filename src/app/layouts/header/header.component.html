@@ -1,9 +1,26 @@
-<header>
-  <span
-    routerLink="/"
-    class="app-title"
-  >{{ title }}</span>
-  <button mat-icon-button>
-    <mat-icon>shopping_cart</mat-icon>
-  </button>
-</header>
+<mat-toolbar class="header">
+  @if (loadingService.isLoading()) {
+    <mat-progress-bar mode="indeterminate" class="loader"/>
+  }
+  <div class="left-side">
+    <span
+      routerLink="/"
+      class="app-title"
+    >{{ title }}</span>
+    <app-navigation/>
+  </div>
+  <div class="actions">
+    <button mat-icon-button>
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      (click)="onProfileClick()"
+    >
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<app-login-dialog
+  [visible]="modalVisible"
+/>

@@ -1,6 +1,6 @@
 @import "variables";
 
-header {
+.header {
   top: 0;
   height: 64px;
   padding: 0 1rem;
@@ -9,8 +9,17 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: sticky;
-  z-index: 10;
+  .left-side {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5rem;
+  }
+  .loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   .app-title {
     font-size: 1.5rem;
     display: flex;

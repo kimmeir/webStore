@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IProduct } from '../../services/products/products.typing';
-import { Observable } from 'rxjs';
-import { ProductsService } from '../../services/products/products.service';
-import { JsonPipe } from '@angular/common';
+import { ProductsService } from '../../services/requests/products/products.service';
+import { CurrencyPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
+import { MatButton } from '@angular/material/button';
+import { IProduct } from '../../services/requests';
+import { GalleriaModule } from 'primeng/galleria';
 
 @Component({
   selector: 'app-single-product',
@@ -11,7 +12,11 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './single-product.component.html',
   styleUrl: './single-product.component.scss',
   imports: [
-    JsonPipe
+    JsonPipe,
+    CurrencyPipe,
+    MatButton,
+    GalleriaModule,
+    NgOptimizedImage
   ],
 })
 export class SingleProductComponent {
@@ -29,5 +34,9 @@ export class SingleProductComponent {
       .subscribe((product: IProduct) => {
         this.product$ = product;
       });
+  }
+
+  addToCart(product: IProduct) {
+    console.log('product', product);
   }
 }

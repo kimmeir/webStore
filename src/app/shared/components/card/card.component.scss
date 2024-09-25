@@ -1,10 +1,15 @@
 @import 'variables';
 
 .products-item {
-  border: 1px solid black;
   border-radius: $rounded;
   height: 100%;
   box-shadow: $shadow-2;
+  transition: transform 0.3s;
+  overflow: hidden;
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: $shadow-2-hover;
+  }
   &-image {
     width: 100%;
     height: 200px;

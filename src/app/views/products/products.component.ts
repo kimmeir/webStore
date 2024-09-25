@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { ProductsService } from '../../services/products/products.service';
+import { ProductsService } from '../../services/requests/products/products.service';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { IProduct } from '../../services/products/products.typing';
-import { ProductListItemComponent } from './components/product-list-item/product-list-item.component';
+import { ActivatedRoute, Router } from '@angular/router';
+import { CardComponent } from '../../shared/components/card/card.component';
 
 @Component({
   selector: 'app-products',
@@ -10,18 +10,26 @@ import { ProductListItemComponent } from './components/product-list-item/product
   styleUrl: './products.component.scss',
   imports: [
     MatProgressBar,
-    ProductListItemComponent,
+    CardComponent,
   ],
   standalone: true
 })
 export class ProductsComponent {
-  products: IProduct[] = [];
-
-  constructor(private productsService: ProductsService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    protected productsService: ProductsService
+  ) {}
 
   ngOnInit() {
-    this.productsService.getProducts().subscribe((products) => {
-      this.products = products;
+    this.route.queryParams.subscribe((params) => {
+      params['categoryId']
+        ? this.productsService.getProductsByCategory(params['categoryId'])
+        : this.productsService.getProducts();
     });
+  }
+
+  onProductClick(id: number) {
+    this.router.navigate(['/products', id]);
   }
 }

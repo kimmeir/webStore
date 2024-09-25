@@ -1,0 +1,17 @@
+<div class="profile">
+  <h1>Profile</h1>
+  <p>
+    <strong>Username:</strong> {{ user$?.name }}
+  </p>
+  <p>
+    <strong>Email:</strong> {{ user$?.email }}
+  </p>
+  <p>
+    <strong>Role:</strong> {{ user$?.role }}
+  </p>
+  <button
+    mat-flat-button
+    (click)="logout()"
+    color="primary"
+  >Logout</button>
+</div>
