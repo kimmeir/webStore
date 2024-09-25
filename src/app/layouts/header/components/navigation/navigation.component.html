@@ -1,0 +1,8 @@
+<nav class="nav">
+  @for (nav of navItems; track nav.link) {
+    <button
+      mat-button
+      routerLink="{{nav.link}}"
+    >{{nav.title}}</button>
+  }
+</nav>
