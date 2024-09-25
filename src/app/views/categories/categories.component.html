@@ -1,0 +1,13 @@
+@defer (when categoriesService.categories.length) {
+  <div class="card-grid">
+    @for (category of categoriesService.categories; track category.id) {
+      <app-card [item]="{
+          id: category.id,
+          title: category.name,
+          image: category.image,
+        }"
+        (click)="onCategoryClick(category.id)"
+      />
+    }
+  </div>
+}

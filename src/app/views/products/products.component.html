@@ -1,11 +1,14 @@
-@defer (when products.length) {
+@defer (when productsService.products.length) {
   <div class="products">
-    @for (product of products; track product.id) {
-      <app-product-list-item [product]="product"/>
+    @for (product of productsService.products; track product.id) {
+      <app-card [item]="{
+          id: product.id,
+          title: product.title,
+          image: product.images[0],
+          price: product.price,
+        }"
+        (click)="onProductClick(product.id)"
+      />
     }
   </div>
-} @loading (minimum 1000ms) {
-  <mat-progress-bar mode="indeterminate"/>
-} @error () {
-  <p>Error loading products</p>
 }

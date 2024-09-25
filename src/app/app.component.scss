@@ -1,0 +1,15 @@
+.root {
+  display: grid;
+  grid-template-rows: 64px 1fr;
+  height: 100%;
+  app-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  app-main {
+    display: flex;
+    height: 100%;
+    overflow-y: auto;
+  }
+}

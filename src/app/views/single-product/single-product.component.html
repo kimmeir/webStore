@@ -1,1 +1,25 @@
-<p>{{product$ | json}}</p>
+@if (product$) {
+  <div class="product">
+    <div class="product-image">
+      <p-galleria
+        [value]="product$.images"
+        [showIndicators]="true"
+        [showThumbnails]="false"
+      >
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item" style="width: 100%; display: block;" />
+        </ng-template>
+      </p-galleria>
+    </div>
+    <div class="product-details">
+      <h2>{{ product$.title }}</h2>
+      <p>{{ product$.description }}</p>
+      <p>Price: {{ product$.price | currency }}</p>
+      <button
+        mat-raised-button
+        (click)="addToCart(product$)"
+      >Add to Cart
+      </button>
+    </div>
+  </div>
+}
