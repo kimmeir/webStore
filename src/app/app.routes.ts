@@ -3,6 +3,11 @@ import { profileGuard } from './views/profile/profile.guard';
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full'
+  },
+  {
     path: 'products',
     children: [
       {

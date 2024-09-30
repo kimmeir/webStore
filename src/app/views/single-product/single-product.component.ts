@@ -5,6 +5,7 @@ import { CurrencyPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { IProduct } from '../../services/requests';
 import { GalleriaModule } from 'primeng/galleria';
+import { GetProductGQL, GetProductQuery } from '../../graphql/generated';
 
 @Component({
   selector: 'app-single-product',
@@ -20,23 +21,23 @@ import { GalleriaModule } from 'primeng/galleria';
   ],
 })
 export class SingleProductComponent {
-  product$!: IProduct;
+  product!: GetProductQuery['product'];
   productId: string | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService
+    private getProductGQL: GetProductGQL,
   ) { }
 
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
-    this.productsService.getProduct(Number(this.productId))
-      .subscribe((product: IProduct) => {
-        this.product$ = product;
-      });
+    if (this.productId) {
+      this.getProductGQL.fetch({ id: this.productId })
+        .subscribe(result => this.product = result.data.product);
+    }
   }
 
-  addToCart(product: IProduct) {
+  addToCart(product: GetProductQuery['product']) {
     console.log('product', product);
   }
 }

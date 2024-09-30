@@ -1,8 +1,13 @@
 import { Component } from '@angular/core';
-import { ProductsService } from '../../services/requests/products/products.service';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CardComponent } from '../../shared/components/card/card.component';
+import {
+  GetAllProductsGQL,
+  GetAllProductsQuery,
+  GetProductsByCategoryGQL,
+  GetProductsByCategoryQuery
+} from '../../graphql/generated';
 
 @Component({
   selector: 'app-products',
@@ -15,21 +20,32 @@ import { CardComponent } from '../../shared/components/card/card.component';
   standalone: true
 })
 export class ProductsComponent {
+  products: GetAllProductsQuery['products'] | GetProductsByCategoryQuery['products'] | undefined;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    protected productsService: ProductsService
+    private getAllProductsGQL: GetAllProductsGQL,
+    private getProductsByCategoryGQL: GetProductsByCategoryGQL,
   ) {}
 
   ngOnInit() {
     this.route.queryParams.subscribe((params) => {
       params['categoryId']
-        ? this.productsService.getProductsByCategory(params['categoryId'])
-        : this.productsService.getProducts();
+        ? this.getProductsByCategoryGQL.fetch({ categoryId: Number(params['categoryId']) })
+          .subscribe(result => this.products = result.data.products)
+        : this.getAllProductsGQL.fetch()
+          .subscribe(result => this.products = result.data.products);
     });
   }
 
-  onProductClick(id: number) {
+  onProductClick(id: any) {
     this.router.navigate(['/products', id]);
+  }
+
+  parseImage(image: string) {
+    console.log(image);
+    return image[0] === '['
+      ? JSON.parse(image)[0]
+      : image
   }
 }

@@ -1,0 +1,9 @@
+type Query {
+  products(categoryId: Float): [Product]
+  product(id: ID!): Product
+  categories: [Category]
+}
+
+type Mutation {
+  login(email: String!, password: String!): Auth
+}

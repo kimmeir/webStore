@@ -1,12 +1,12 @@
-@defer (when productsService.products.length) {
+@defer (when products !== undefined) {
   <div class="products">
-    @for (product of productsService.products; track product.id) {
+    @for (product of products; track product.id) {
       <app-card [item]="{
-          id: product.id,
-          title: product.title,
-          image: product.images[0],
-          price: product.price,
-        }"
+        id: product.id,
+        title: product.title,
+        image: parseImage(product.images[0]),
+        price: product.price,
+      }"
         (click)="onProductClick(product.id)"
       />
     }

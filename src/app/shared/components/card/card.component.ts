@@ -2,14 +2,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCard, MatCardContent, MatCardImage, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { CurrencyPipe, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { IProductCategory } from '../../../services/requests';
 
 interface ICardItem {
-  id: number;
+  id: number | string;
   title: string;
   description?: string;
   price?: number;
-  image: string;
+  image?: string;
 }
 @Component({
   selector: 'app-card',
@@ -29,7 +28,7 @@ interface ICardItem {
 })
 export class CardComponent {
   @Input() item!: ICardItem;
-  @Output() click = new EventEmitter<number>();
+  @Output() click = new EventEmitter<number | string>();
 
   constructor(private router: Router) { }
 
