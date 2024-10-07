@@ -6,5 +6,10 @@ export interface IProduct {
   price: number;
   description: string;
   category: IProductCategory;
-  images: string[];
+  images: string[] | null;
+}
+
+export interface IProductAddToCart {
+  productId: number;
+  quantity: number;
 }

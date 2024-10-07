@@ -1,14 +1,14 @@
-@defer (when products !== undefined) {
-  <div class="products">
-    @for (product of products; track product.id) {
-      <app-card [item]="{
-        id: product.id,
-        title: product.title,
-        image: parseImage(product.images[0]),
-        price: product.price,
-      }"
-        (click)="onProductClick(product.id)"
-      />
-    }
-  </div>
-}
+<div class="products">
+  @for (product of products$ | async; track product.id) {
+    <app-card [item]="{
+      id: product.id,
+      title: product.title,
+      image: product.images?.[0],
+      price: product.price,
+    }"
+      [isProduct]="true"
+      (click)="onProductClick(product.id)"
+      (onAddToCart)="onAddToCart($event)"
+    />
+  }
+</div>

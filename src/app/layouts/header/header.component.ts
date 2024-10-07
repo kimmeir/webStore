@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
@@ -29,14 +29,18 @@ import { ProfileService } from '../../services/requests/profile/profile.service'
   standalone: true
 })
 export class HeaderComponent {
+  public loadingService = inject(LoadingService);
   title = 'Andrew store app';
   modalVisible = false;
+  isLoading = this.loadingService.isLoading;
 
   constructor(
-    protected loadingService: LoadingService,
     private profileService: ProfileService,
-    private router: Router
-  ) {
+    private router: Router,
+  ) {}
+
+  onCartClick() {
+    this.router.navigate(['/cart']);
   }
 
   onProfileClick() {

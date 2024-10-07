@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { Router } from '@angular/router';
-import { GetCategoriesGQL, GetCategoriesQuery } from '../../graphql/generated';
+import { CategoriesService, IProductCategory } from '../../services/requests/categories';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 
 @Component({
@@ -9,23 +11,16 @@ import { GetCategoriesGQL, GetCategoriesQuery } from '../../graphql/generated';
   standalone: true,
   imports: [
     CardComponent,
+    AsyncPipe,
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent {
-  categories: GetCategoriesQuery['categories'] | undefined;
+  categoriesService = inject(CategoriesService);
+  categories$: Observable<IProductCategory[]> = this.categoriesService.getAllCategories();
 
-  constructor(
-    private router: Router,
-    private getCategoriesGQL: GetCategoriesGQL,
-  ) {}
-
-  ngOnInit() {
-    this.getCategoriesGQL.fetch().subscribe(result => {
-      this.categories = result.data.categories;
-    });
-  }
+  constructor(private router: Router) {}
 
   onCategoryClick(id: number | string) {
     this.router.navigate(['/products'], { queryParams: { categoryId: id } });

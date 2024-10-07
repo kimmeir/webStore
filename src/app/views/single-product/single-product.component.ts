@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '../../services/requests/products/products.service';
 import { CurrencyPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
 import { MatButton } from '@angular/material/button';
-import { IProduct } from '../../services/requests';
+import { IProduct, ProductsService } from '../../services/requests/products';
 import { GalleriaModule } from 'primeng/galleria';
-import { GetProductGQL, GetProductQuery } from '../../graphql/generated';
+import { Observable } from 'rxjs';
+import { CartService } from '../../services/requests/cart.service';
 
 @Component({
   selector: 'app-single-product',
@@ -21,23 +21,23 @@ import { GetProductGQL, GetProductQuery } from '../../graphql/generated';
   ],
 })
 export class SingleProductComponent {
-  product!: GetProductQuery['product'];
   productId: string | null = null;
+  product$: Observable<IProduct> | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private getProductGQL: GetProductGQL,
+    private productsService: ProductsService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
     if (this.productId) {
-      this.getProductGQL.fetch({ id: this.productId })
-        .subscribe(result => this.product = result.data.product);
+        this.product$ = this.productsService.getProduct(this.productId);
     }
   }
 
-  addToCart(product: GetProductQuery['product']) {
-    console.log('product', product);
+  addToCart(product: IProduct) {
+    this.cartService.addToCart({ productId: product.id, quantity: 1 }).subscribe();
   }
 }

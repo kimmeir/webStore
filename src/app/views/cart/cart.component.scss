@@ -1,0 +1,22 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  &-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.product {
+  display: grid;
+  grid-template-columns: 50px repeat(3, 1fr) 50px;
+  align-items: center;
+  justify-items: end;
+  border-bottom: 1px solid #e0e0e0;
+  &-image {
+    img {
+      width: 100%;
+    }
+  }
+}

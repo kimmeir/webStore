@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormControl, ɵFormGroupValue, ɵTypedOrUntyped } from '@angular/forms';
 import { IToken, IUser } from './profile.typings';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { TokenService } from '../../token.service';
 
 @Injectable({
@@ -16,9 +16,8 @@ export class ProfileService {
     private tokenService: TokenService
   ) {}
 
-  getProfile(): Subscription {
-    return this.http.get<IUser>('/auth/profile')
-      .subscribe((res) => this.user = res);
+  getProfile(): Observable<IUser> {
+    return this.http.get<IUser>('/profile')
   }
 
   login(loginForm: ɵTypedOrUntyped<{

@@ -8,7 +8,6 @@ import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
 import { TokenService } from '../../../../services/token.service';
 import { ProfileService } from '../../../../services/requests/profile/profile.service';
-import { LoginGQL, LoginMutation } from '../../../../graphql/generated';
 
 @Component({
   selector: 'app-login-dialog',
@@ -35,18 +34,17 @@ export class LoginDialogComponent {
   });
 
   constructor(
-    private loginGQL: LoginGQL,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private profileService: ProfileService
   ) {}
 
   onSubmit() {
-    //@ts-ignore
-    this.loginGQL.mutate(this.loginForm.value)
-      .subscribe(result => {
-      if (result.data?.login) {
-        this.tokenService.setToken(result.data.login.access_token);
-        this.visible = false;
-      }
+    this.profileService.login(this.loginForm.value)
+      .subscribe(res => {
+        if (res) {
+          this.tokenService.setToken(res.access_token);
+          this.visible = false;
+        }
     });
   }
 }

@@ -1,22 +1,31 @@
 <mat-card
-  class="products-item pointer"
-  (click)="clickHandler()"
+  class="card pointer"
+  (click)="onClick()"
 >
-  <div class="products-item-image">
+  <div class="card-image">
     <img
-      ngSrc="{{item.image}}"
+      ngSrc="{{item.image || '/placeholder.png'}}"
       alt="{{item.title}}"
       mat-card-image
       fill
+      priority
     >
   </div>
   <mat-card-content>
-    <mat-card-title class="products-item-title ellipsis">{{ item.title | titlecase }}</mat-card-title>
+    <mat-card-title class="card-title ellipsis">{{ item.title | titlecase }}</mat-card-title>
     @if (item.description) {
-      <mat-card-subtitle class="products-item-subtitle ellipsis">{{ item.description }}</mat-card-subtitle>
+      <mat-card-subtitle class="card-subtitle ellipsis">{{ item.description }}</mat-card-subtitle>
     }
-    @if (item.price) {
-      <span class="products-item-price">{{ item.price | currency }}</span>
-    }
+    <div class="card-footer">
+      @if (item.price) {
+        <span class="card-price">{{ item.price | currency }}</span>
+      }
+      @if (isProduct) {
+        <button
+          mat-flat-button
+          (click)="onClickAddToCart($event)"
+        >Add to Cart</button>
+      }
+    </div>
   </mat-card-content>
 </mat-card>
