@@ -1,26 +1,28 @@
-import { Component } from '@angular/core';
-import { CategoriesService } from '../../services/requests';
+import { Component, inject } from '@angular/core';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { Router } from '@angular/router';
+import { CategoriesService, IProductCategory } from '../../services/requests/categories';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-categories',
   standalone: true,
   imports: [
-    CardComponent
+    CardComponent,
+    AsyncPipe,
   ],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.scss'
 })
 export class CategoriesComponent {
-  constructor(
-    private router: Router,
-    protected categoriesService: CategoriesService
-  ) {
-    this.categoriesService.getAllCategories()
-  }
+  categoriesService = inject(CategoriesService);
+  categories$: Observable<IProductCategory[]> = this.categoriesService.getAllCategories();
 
-  onCategoryClick(id: number) {
+  constructor(private router: Router) {}
+
+  onCategoryClick(id: number | string) {
     this.router.navigate(['/products'], { queryParams: { categoryId: id } });
   }
 }

@@ -2,14 +2,14 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatCard, MatCardContent, MatCardImage, MatCardSubtitle, MatCardTitle } from '@angular/material/card';
 import { CurrencyPipe, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { IProductCategory } from '../../../services/requests';
+import { MatButton } from '@angular/material/button';
 
 interface ICardItem {
-  id: number;
+  id: number | string;
   title: string;
   description?: string;
   price?: number;
-  image: string;
+  image?: string;
 }
 @Component({
   selector: 'app-card',
@@ -23,17 +23,24 @@ interface ICardItem {
     MatCardSubtitle,
     TitleCasePipe,
     CurrencyPipe,
+    MatButton,
   ],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
   @Input() item!: ICardItem;
-  @Output() click = new EventEmitter<number>();
+  @Input() isProduct = false;
 
-  constructor(private router: Router) { }
+  @Output() click = new EventEmitter<number | string>();
+  @Output() onAddToCart = new EventEmitter<number | string | object>();
 
-  clickHandler() {
+  onClick() {
     this.click.emit(this.item.id);
+  }
+
+  onClickAddToCart(event: Event) {
+    event.stopPropagation();
+    this.onAddToCart.emit(this.item);
   }
 }

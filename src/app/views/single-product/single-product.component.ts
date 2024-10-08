@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductsService } from '../../services/requests/products/products.service';
 import { CurrencyPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
 import { MatButton } from '@angular/material/button';
-import { IProduct } from '../../services/requests';
+import { IProduct, ProductsService } from '../../services/requests/products';
 import { GalleriaModule } from 'primeng/galleria';
+import { Observable } from 'rxjs';
+import { CartService } from '../../services/requests/cart.service';
 
 @Component({
   selector: 'app-single-product',
@@ -20,23 +21,23 @@ import { GalleriaModule } from 'primeng/galleria';
   ],
 })
 export class SingleProductComponent {
-  product$!: IProduct;
   productId: string | null = null;
+  product$: Observable<IProduct> | null = null;
 
   constructor(
     private route: ActivatedRoute,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private cartService: CartService
   ) { }
 
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
-    this.productsService.getProduct(Number(this.productId))
-      .subscribe((product: IProduct) => {
-        this.product$ = product;
-      });
+    if (this.productId) {
+        this.product$ = this.productsService.getProduct(this.productId);
+    }
   }
 
   addToCart(product: IProduct) {
-    console.log('product', product);
+    this.cartService.addToCart({ productId: product.id, quantity: 1 }).subscribe();
   }
 }

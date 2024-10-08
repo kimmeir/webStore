@@ -1,0 +1,35 @@
+@if (cart$().length > 0) {
+  <div class="cart" *ngIf="cart$() as cartItems">
+    @for (item of cartItems; track item.id) {
+      <div
+        class="product"
+        [routerLink]="['/products/' + item.product.id]"
+      >
+        <div class="product-image">
+          @if (item.product.images?.[0]) {
+            <img [src]="item.product.images?.[0]" [alt]="item.product.title"/>
+          } @else {
+            <img src="/placeholder.png" [alt]="item.product.title"/>
+          }
+        </div>
+        <span class="product-title">{{ item.product.title }}</span>
+        <span class="product-price">{{ item.product.price | currency }}</span>
+        <span class="product-quantity">Quantity: {{ item.quantity }}</span>
+        <div
+          class="actions">
+          <button
+            mat-icon-button
+            (click)="onRemoveFromCart($event, item.id)"
+          >
+            <mat-icon>remove_shopping_cart</mat-icon>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+}
+@else {
+  <div class="cart-empty">
+    <h3>No items in cart</h3>
+  </div>
+}

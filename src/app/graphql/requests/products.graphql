@@ -1,0 +1,41 @@
+type Product {
+  id: ID!
+  title: String!
+  price: Float!
+  description: String
+  category: Category!
+  images: [String]!
+}
+
+query getAllProducts {
+  products {
+    id
+    title
+    price
+    images
+  }
+}
+
+query getProduct($id: ID!) {
+  product(id: $id) {
+    id
+    title
+    price
+    description
+    category {
+      id
+      name
+      image
+    }
+    images
+  }
+}
+
+query getProductsByCategory($categoryId: Float) {
+  products(categoryId: $categoryId) {
+    id
+    title
+    price
+    images
+  }
+}

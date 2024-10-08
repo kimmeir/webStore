@@ -3,6 +3,11 @@ import { profileGuard } from './views/profile/profile.guard';
 
 export const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'products',
+    pathMatch: 'full'
+  },
+  {
     path: 'products',
     children: [
       {
@@ -18,6 +23,10 @@ export const routes: Routes = [
   {
     path: 'categories',
     loadComponent: () => import('./views/categories/categories.component').then(m => m.CategoriesComponent),
+  },
+  {
+    path: 'cart',
+    loadComponent: () => import('./views/cart/cart.component').then(m => m.CartComponent),
   },
   {
     path: 'profile',

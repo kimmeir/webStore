@@ -34,17 +34,17 @@ export class LoginDialogComponent {
   });
 
   constructor(
-    private profileService: ProfileService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private profileService: ProfileService
   ) {}
 
   onSubmit() {
     this.profileService.login(this.loginForm.value)
-      .subscribe((res) => {
-        if (res)
+      .subscribe(res => {
+        if (res) {
           this.tokenService.setToken(res.access_token);
-
-        this.visible = false;
-      });
+          this.visible = false;
+        }
+    });
   }
 }

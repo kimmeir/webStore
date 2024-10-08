@@ -1,5 +1,5 @@
 <mat-toolbar class="header">
-  @if (loadingService.isLoading()) {
+  @if (isLoading()) {
     <mat-progress-bar mode="indeterminate" class="loader"/>
   }
   <div class="left-side">
@@ -10,7 +10,10 @@
     <app-navigation/>
   </div>
   <div class="actions">
-    <button mat-icon-button>
+    <button
+      mat-icon-button
+      (click)="onCartClick()"
+    >
       <mat-icon>shopping_cart</mat-icon>
     </button>
     <button

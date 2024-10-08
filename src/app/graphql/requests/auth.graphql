@@ -1,0 +1,11 @@
+type Auth {
+  access_token: String!
+  refresh_token: String!
+}
+
+mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    access_token
+    refresh_token
+  }
+}

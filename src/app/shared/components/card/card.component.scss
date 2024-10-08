@@ -1,6 +1,6 @@
 @import 'variables';
 
-.products-item {
+.card {
   border-radius: $rounded;
   height: 100%;
   box-shadow: $shadow-2;
@@ -28,5 +28,12 @@
   &-subtitle {
     font-size: 0.75rem;
     padding: 10px;
+  }
+  &-content {
+    padding: 10px;
+  }
+  &-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
@@ -7,7 +7,6 @@ import { LoadingService } from '../../services/loading/loading';
 import { MatToolbar } from '@angular/material/toolbar';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { MatFormField, MatOption, MatSelect } from '@angular/material/select';
-import { CategoriesService } from '../../services/requests';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { ProfileService } from '../../services/requests/profile/profile.service';
 
@@ -30,16 +29,18 @@ import { ProfileService } from '../../services/requests/profile/profile.service'
   standalone: true
 })
 export class HeaderComponent {
+  public loadingService = inject(LoadingService);
   title = 'Andrew store app';
   modalVisible = false;
+  isLoading = this.loadingService.isLoading;
 
   constructor(
-    protected loadingService: LoadingService,
-    protected categoriesService: CategoriesService,
     private profileService: ProfileService,
-    private router: Router
-  ) {
-    this.categoriesService.getAllCategories()
+    private router: Router,
+  ) {}
+
+  onCartClick() {
+    this.router.navigate(['/cart']);
   }
 
   onProfileClick() {
