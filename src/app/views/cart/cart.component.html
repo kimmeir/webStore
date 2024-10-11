@@ -1,9 +1,9 @@
-@if (cart$().length > 0) {
-  <div class="cart" *ngIf="cart$() as cartItems">
-    @for (item of cartItems; track item.id) {
+@if (cart$ | async) {
+  <div class="cart" *ngIf="cart$">
+    @for (item of cart$ | async; let idx = $index; track idx) {
       <div
         class="product"
-        [routerLink]="['/products/' + item.product.id]"
+        [routerLink]="['/products/' + item.productId]"
       >
         <div class="product-image">
           @if (item.product.images?.[0]) {
@@ -19,7 +19,7 @@
           class="actions">
           <button
             mat-icon-button
-            (click)="onRemoveFromCart($event, item.id)"
+            (click)="onRemoveFromCart($event, item.productId)"
           >
             <mat-icon>remove_shopping_cart</mat-icon>
           </button>
@@ -27,8 +27,7 @@
       </div>
     }
   </div>
-}
-@else {
+} @else {
   <div class="cart-empty">
     <h3>No items in cart</h3>
   </div>

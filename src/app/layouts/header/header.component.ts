@@ -29,15 +29,14 @@ import { ProfileService } from '../../services/requests/profile/profile.service'
   standalone: true
 })
 export class HeaderComponent {
-  public loadingService = inject(LoadingService);
+  loadingService = inject(LoadingService);
+  profileService = inject(ProfileService);
+
   title = 'Andrew store app';
-  modalVisible = false;
   isLoading = this.loadingService.isLoading;
 
-  constructor(
-    private profileService: ProfileService,
-    private router: Router,
-  ) {}
+  constructor(private router: Router) {
+  }
 
   onCartClick() {
     this.router.navigate(['/cart']);
@@ -46,6 +45,6 @@ export class HeaderComponent {
   onProfileClick() {
     this.profileService.isAuthorized()
       ? this.router.navigate(['/profile'])
-      : this.modalVisible = true;
+      : this.profileService.isLoginModalOpen.set(true);
   }
 }
