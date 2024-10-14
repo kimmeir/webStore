@@ -1,9 +1,12 @@
 @import "variables";
 
-html, body { height: 100%; }
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Public Sans', sans-serif !important;
   font-size: 16px;
 }
 
@@ -13,6 +16,7 @@ body {
   text-overflow: ellipsis;
   max-width: 100%;
 }
+
 .pointer {
   cursor: pointer;
 }
@@ -25,3 +29,8 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
 }
+
+@include addFont(display, $display-fonts);
+@include addFont(heading, $headings-fonts);
+@include addFont(label, $label-fonts);
+@include addBodyFont(body, $body-fonts);

@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { IProduct, ProductsService } from '../../services/requests/products';
 import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
-import { CartService } from '../../services/requests/cart.service';
+import { Store } from '@ngrx/store';
+import { cartActions } from '../../state/cart/cart.actions';
 
 @Component({
   selector: 'app-products',
@@ -23,15 +24,9 @@ export class ProductsComponent {
   products$: Observable<IProduct[]> = this.productsService.getProducts();
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private cartService: CartService
-  ) {}
-
-  ngOnInit() {
-    // this.route.queryParams.subscribe((params) => {
-      // params['categoryId']
-        // ? this.productsService.getProductsByCategory(Number(params['categoryId']))
+    private store: Store,
+  ) {
   }
 
   onProductClick(id: any) {
@@ -39,6 +34,14 @@ export class ProductsComponent {
   }
 
   onAddToCart(product: IProduct | any) {
-    this.cartService.addToCart({ productId: product.id, quantity: 1 }).subscribe();
+    const cartItem = {
+      productId: product.id,
+      product,
+      quantity: 1
+    };
+    this.store.dispatch(cartActions.addTrigger(cartItem))
+    // this.profileService.isAuthorized()
+    //   ? this.cartService.addToCart(cartItem).subscribe()
+    //   : this.store.dispatch(cartActions.add(cartItem))
   }
 }

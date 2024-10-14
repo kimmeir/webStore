@@ -12,3 +12,8 @@ export interface IUser {
   role: string;
   avatar: string;
 }
+
+export interface ILoginForm {
+  email: string;
+  password: string;
+}

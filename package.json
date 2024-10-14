@@ -22,6 +22,10 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@apollo/client": "^3.11.8",
+    "@ngrx/effects": "^18.1.0",
+    "@ngrx/signals": "^18.1.0",
+    "@ngrx/store": "^18.1.0",
+    "@ngrx/store-devtools": "^18.1.0",
     "apollo-angular": "^7.2.0",
     "graphql": "^16.9.0",
     "primeng": "^17.18.10",
@@ -33,6 +37,9 @@
     "@angular-devkit/build-angular": "^18.2.4",
     "@angular/cli": "^18.2.4",
     "@angular/compiler-cli": "^18.2.0",
+    "@graphql-codegen/cli": "5.0.2",
+    "@graphql-codegen/introspection": "4.0.3",
+    "@graphql-codegen/typescript-apollo-angular": "4.0.0",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
@@ -45,5 +52,6 @@
     "@graphql-codegen/typescript-apollo-angular": "4.0.0",
     "@graphql-codegen/introspection": "4.0.3",
     "@graphql-codegen/cli": "5.0.2"
+    "typescript": "~5.5.2"
   }
 }
