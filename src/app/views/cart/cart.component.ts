@@ -3,8 +3,11 @@ import { CartService } from '../../services/requests/cart.service';
 import { AsyncPipe, CurrencyPipe, JsonPipe, NgIf } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatIconButton } from '@angular/material/button';
-import { switchMap } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { selectCartItems } from '../../state/cart/cart.selectors';
+import { ProfileService } from '../../services/requests/profile/profile.service';
+import { cartActions } from '../../state/cart/cart.actions';
 
 @Component({
   selector: 'app-cart',
@@ -23,18 +26,25 @@ import { RouterLink } from '@angular/router';
 })
 export class CartComponent {
   cartService = inject(CartService);
-  cart$ = this.cartService.cartItems;
+  store = inject(Store);
 
-  constructor() {
-    this.cartService.getCart()
+  // cart$ = this.cartService.cartItems;
+  cart$ = this.store.select(selectCartItems);
+
+  constructor(private profileService: ProfileService) {
+    if (this.profileService.isAuthorized())
+      this.cartService.getCart()
   }
 
-  onRemoveFromCart(event: Event, id: number) {
+  onRemoveFromCart(event: Event, productId: number | string) {
     event.stopPropagation();
-    this.cartService.removeFromCart(id)
-      .pipe(
-        switchMap(async () => this.cartService.getCart())
-      )
-      .subscribe();
+    this.store.dispatch(cartActions.removeTrigger(productId));
+    //
+    // if (this.profileService.isAuthorized())
+    //   this.cartService.removeFromCart(productId)
+    //     .subscribe();
+    // else {
+    //   this.store.dispatch(cartActions.remove(productId));
+    // }
   }
 }

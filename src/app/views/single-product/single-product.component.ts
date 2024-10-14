@@ -5,7 +5,8 @@ import { MatButton } from '@angular/material/button';
 import { IProduct, ProductsService } from '../../services/requests/products';
 import { GalleriaModule } from 'primeng/galleria';
 import { Observable } from 'rxjs';
-import { CartService } from '../../services/requests/cart.service';
+import { cartActions } from '../../state/cart/cart.actions';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-single-product',
@@ -27,17 +28,24 @@ export class SingleProductComponent {
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
-    private cartService: CartService
-  ) { }
+    private store: Store
+  ) {
+  }
 
   ngOnInit() {
     this.productId = this.route.snapshot.paramMap.get('id');
     if (this.productId) {
-        this.product$ = this.productsService.getProduct(this.productId);
+      this.product$ = this.productsService.getProduct(this.productId);
     }
   }
 
   addToCart(product: IProduct) {
-    this.cartService.addToCart({ productId: product.id, quantity: 1 }).subscribe();
+    const cartItem = {
+      productId: product.id,
+      product,
+      quantity: 1
+    };
+
+    this.store.dispatch(cartActions.addTrigger(cartItem))
   }
 }

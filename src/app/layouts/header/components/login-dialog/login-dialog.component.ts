@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
@@ -6,8 +6,9 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { MatButton } from '@angular/material/button';
-import { TokenService } from '../../../../services/token.service';
 import { ProfileService } from '../../../../services/requests/profile/profile.service';
+import { Store } from '@ngrx/store';
+import { profileActions } from '../../../../state/profile/profile.actions';
 
 @Component({
   selector: 'app-login-dialog',
@@ -26,25 +27,19 @@ import { ProfileService } from '../../../../services/requests/profile/profile.se
   styleUrl: './login-dialog.component.scss'
 })
 export class LoginDialogComponent {
-  @Input() visible!: boolean;
+  profileService = inject(ProfileService);
+  visible = this.profileService.isLoginModalOpen;
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required]),
   });
 
-  constructor(
-    private tokenService: TokenService,
-    private profileService: ProfileService
-  ) {}
+  constructor(private store: Store) {
+  }
 
   onSubmit() {
-    this.profileService.login(this.loginForm.value)
-      .subscribe(res => {
-        if (res) {
-          this.tokenService.setToken(res.access_token);
-          this.visible = false;
-        }
-    });
+    // @ts-ignore
+    this.store.dispatch(profileActions.login(this.loginForm.value));
   }
 }

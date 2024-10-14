@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { MatButton } from '@angular/material/button';
 import { ProfileService } from '../../services/requests/profile/profile.service';
-import { Router } from '@angular/router';
 import { IUser } from '../../services/requests/profile/profile.typings';
 import { Observable } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { Store } from '@ngrx/store';
+import { profileLogout } from '../../state/profile/profile.actions';
 
 @Component({
   selector: 'app-profile',
@@ -21,10 +22,10 @@ export class ProfileComponent {
   profileService = inject(ProfileService);
   user$: Observable<IUser> = this.profileService.getProfile();
 
-  constructor(private router: Router) {}
+  constructor(private store: Store) {
+  }
 
   logout() {
-    this.profileService.logout();
-    this.router.navigate(['/']);
+    this.store.dispatch(profileLogout());
   }
 }
