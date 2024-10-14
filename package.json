@@ -22,9 +22,6 @@
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
     "@apollo/client": "^3.11.8",
-    "@graphql-codegen/cli": "^5.0.2",
-    "@graphql-codegen/typescript": "^4.0.9",
-    "@graphql-codegen/typescript-apollo-angular": "^4.0.0",
     "@ngrx/effects": "^18.1.0",
     "@ngrx/signals": "^18.1.0",
     "@ngrx/store": "^18.1.0",
@@ -50,6 +47,11 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.5.2",
+    "@graphql-codegen/typescript": "^4.0.9",
+    "@graphql-codegen/typescript-apollo-angular": "4.0.0",
+    "@graphql-codegen/introspection": "4.0.3",
+    "@graphql-codegen/cli": "5.0.2"
     "typescript": "~5.5.2"
   }
 }
