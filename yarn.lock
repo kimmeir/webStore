@@ -1579,7 +1579,7 @@
     "@graphql-codegen/plugin-helpers" "^5.0.3"
     tslib "~2.6.0"
 
-"@graphql-codegen/cli@^5.0.2":
+"@graphql-codegen/cli@5.0.2":
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/cli/-/cli-5.0.2.tgz#07ff691c16da4c3dcc0e1995d3231530379ab317"
   integrity sha512-MBIaFqDiLKuO4ojN6xxG9/xL9wmfD3ZjZ7RsPjwQnSHBCUXnEkdKvX+JVpx87Pq29Ycn8wTJUguXnTZ7Di0Mlw==
@@ -1725,7 +1725,7 @@
     change-case-all "1.0.15"
     tslib "~2.6.0"
 
-"@graphql-codegen/typescript-apollo-angular@^4.0.0":
+"@graphql-codegen/typescript-apollo-angular@4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@graphql-codegen/typescript-apollo-angular/-/typescript-apollo-angular-4.0.0.tgz#ad8cf6b6ebb243b687f3c896640f0eaba1f43341"
   integrity sha512-uZQGvZBXJrgJ+9KKeRrKcB8wHCsailJ1WaCizNLf2YsTBUELVX0SQRrSFptAul9qYzsS84LRs6ndJsmSUnER6w==
