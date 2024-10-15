@@ -1,0 +1,23 @@
+@import 'variables';
+
+.icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  border-radius: 50%;
+  border: none;
+  transition: all 0.3s;
+  color: color(gray-900);
+  width: 3rem;
+  height: 3rem;
+
+  &:hover {
+    background-color: color(primary-500);
+    color: color(white);
+  }
+
+  &-icon {
+    font-size: 1.2rem;
+  }
+}

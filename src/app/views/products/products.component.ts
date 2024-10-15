@@ -7,6 +7,7 @@ import { AsyncPipe } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { cartActions } from '../../state/cart/cart.actions';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @Component({
   selector: 'app-products',
@@ -16,6 +17,7 @@ import { cartActions } from '../../state/cart/cart.actions';
     MatProgressBar,
     CardComponent,
     AsyncPipe,
+    ProductCardComponent,
   ],
   standalone: true
 })
@@ -40,8 +42,5 @@ export class ProductsComponent {
       quantity: 1
     };
     this.store.dispatch(cartActions.addTrigger(cartItem))
-    // this.profileService.isAuthorized()
-    //   ? this.cartService.addToCart(cartItem).subscribe()
-    //   : this.store.dispatch(cartActions.add(cartItem))
   }
 }

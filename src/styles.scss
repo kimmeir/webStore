@@ -1,5 +1,5 @@
 @import "variables";
-@import "fonts";
+@import "theme";
 
 html, body {
   height: 100%;
@@ -29,6 +29,16 @@ body {
   align-items: stretch;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1rem;
+}
+
+.container {
+  max-width: 1315px;
+  margin: 0 auto;
+}
+
+.mat-badge-content {
+  --mat-badge-legacy-container-size: unset;
+  background-color: color(primary-500) !important;
 }
 
 @include addFont(display, $display-fonts);

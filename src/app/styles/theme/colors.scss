@@ -1,0 +1,25 @@
+@import "functions";
+
+:root {
+  --color-white: 255, 255, 255;
+  --color-black: 0, 0, 0;
+  --color-gray-100: 228, 231, 233;
+  --color-gray-900: 25, 28, 31;
+  --color-primary-200: 255, 206, 173;
+  --color-primary-500: 250, 130, 50;
+  --color-primary-600: 222, 115, 45;
+  --color-primary-700: 27, 99, 146;
+  --color-secondary-200: 171, 219, 250;
+  --color-secondary-500: 45, 165, 243;
+  --color-secondary-600: 36, 132, 194;
+  --color-success-200: 171, 224, 167;
+  --color-success-500: 45, 178, 36;
+  --color-success-600: 36, 142, 29;
+  --color-warning-200: 247, 233, 158;
+  --color-warning-400: 239, 211, 61;
+  --color-warning-500: 235, 200, 12;
+  --color-warning-600: 188, 160, 10;
+  --color-danger-200: 248, 188, 188;
+  --color-danger-500: 238, 88, 88;
+  --color-danger-600: 190, 70, 70;
+}

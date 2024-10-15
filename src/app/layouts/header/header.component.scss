@@ -1,29 +1,39 @@
 @import "variables";
 
 .header {
-  top: 0;
-  height: 64px;
-  padding: 0 1rem;
-  box-shadow: $shadow-1;
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .left-side {
-    display: flex;
+  background-color: color(primary-700);
+
+  &-wrapper {
+    display: grid;
     align-items: center;
     justify-content: space-between;
-    gap: 5rem;
+    grid-template-columns: auto minmax(300px, 650px) auto;
+    color: color(white);
+    padding: 1rem 2rem;
+    top: 0;
   }
+
   .loader {
     position: absolute;
     top: 0;
     left: 0;
   }
+
   .app-title {
     font-size: 1.5rem;
     display: flex;
     align-items: center;
     cursor: pointer;
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+
+    button {
+      color: color(white);
+    }
   }
 }
