@@ -37,11 +37,12 @@
             "styles": [
               "src/styles.scss",
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/app/styles"]
+              "includePaths": [
+                "src/app/styles"
+              ]
             },
             "scripts": []
           },
@@ -116,11 +117,12 @@
             "styles": [
               "src/styles.scss",
               "@angular/material/prebuilt-themes/azure-blue.css",
-              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/app/styles"]
+              "includePaths": [
+                "src/app/styles"
+              ]
             },
             "scripts": []
           }

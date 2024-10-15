@@ -1,12 +1,7 @@
 <div class="products">
   @for (product of products$ | async; track product.id) {
-    <app-card [item]="{
-      id: product.id,
-      title: product.title,
-      image: product.images?.[0],
-      price: product.price,
-    }"
-      [isProduct]="true"
+    <app-product-card
+      [product]="product"
       (click)="onProductClick(product.id)"
       (onAddToCart)="onAddToCart($event)"
     />

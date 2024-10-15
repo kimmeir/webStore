@@ -3,35 +3,40 @@
 .card {
   border-radius: $rounded;
   height: 100%;
-  box-shadow: $shadow-2;
   transition: transform 0.3s;
   overflow: hidden;
+
   &:hover {
     transform: scale(1.05);
-    box-shadow: $shadow-2-hover;
   }
+
   &-image {
     width: 100%;
     height: 200px;
     position: relative;
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
+
   &-title {
     font-size: 1.2rem;
     font-weight: bold;
     padding: 10px;
   }
+
   &-subtitle {
     font-size: 0.75rem;
     padding: 10px;
   }
+
   &-content {
     padding: 10px;
   }
+
   &-footer {
     display: grid;
     grid-template-columns: 1fr 1fr;

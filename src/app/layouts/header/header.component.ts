@@ -9,6 +9,10 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { MatFormField, MatOption, MatSelect } from '@angular/material/select';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { ProfileService } from '../../services/requests/profile/profile.service';
+import { MatBadge } from '@angular/material/badge';
+import { Store } from '@ngrx/store';
+import { selectCartTotal } from '../../state/cart/cart.selectors';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -25,17 +29,23 @@ import { ProfileService } from '../../services/requests/profile/profile.service'
     MatFormField,
     MatOption,
     LoginDialogComponent,
+    MatBadge,
+    AsyncPipe,
   ],
   standalone: true
 })
 export class HeaderComponent {
   loadingService = inject(LoadingService);
   profileService = inject(ProfileService);
+  store = inject(Store);
 
   title = 'Andrew store app';
   isLoading = this.loadingService.isLoading;
+  cartCount$ = this.store.select(selectCartTotal);
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+  ) {
   }
 
   onCartClick() {

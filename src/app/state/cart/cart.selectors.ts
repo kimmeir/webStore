@@ -7,3 +7,8 @@ export const selectCartItems = createSelector(
   selectCart,
   (cart) => cart
 );
+
+export const selectCartTotal = createSelector(
+  selectCart,
+  (cart) => cart.length
+);

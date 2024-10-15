@@ -1,0 +1,5 @@
+@function color($color, $opacity: 1) {
+  @return rgba(var(--color-#{$color}), $opacity);
+}
+
+

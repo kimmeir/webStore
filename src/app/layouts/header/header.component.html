@@ -1,27 +1,27 @@
-<mat-toolbar class="header">
+<header class="header">
   @if (isLoading()) {
     <mat-progress-bar mode="indeterminate" class="loader"/>
   }
-  <div class="left-side">
+  <div class="header-wrapper container">
     <span
       routerLink="/"
       class="app-title"
     >{{ title }}</span>
-    <app-navigation/>
+    <input type="text">
+    <div class="actions">
+      <button
+        mat-icon-button
+        (click)="onCartClick()"
+      >
+        <mat-icon [matBadge]="cartCount$ | async">shopping_cart</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        (click)="onProfileClick()"
+      >
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
   </div>
-  <div class="actions">
-    <button
-      mat-icon-button
-      (click)="onCartClick()"
-    >
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      (click)="onProfileClick()"
-    >
-      <mat-icon>account_circle</mat-icon>
-    </button>
-  </div>
-</mat-toolbar>
+</header>
 <app-login-dialog/>

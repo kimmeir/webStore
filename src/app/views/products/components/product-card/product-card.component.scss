@@ -1,0 +1,50 @@
+@import "variables";
+
+.product-card {
+  $r: '.product-card';
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 1px solid color(gray-100);
+  border-radius: $rounded;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: $shadow-1;
+
+    #{$r}-actions {
+      opacity: 1;
+    }
+  }
+
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: color(black, .2);
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: opacity 0.3s;
+
+  }
+
+  &-image {
+    height: 180px;
+  }
+
+  &-price {
+    color: color(secondary-500);
+  }
+}

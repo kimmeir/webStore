@@ -50,7 +50,7 @@ export const cartAddEffect = createEffect((
     ofType(cartActions.addTrigger),
     tap((cartItem) => profileService.isAuthorized()
       ? cartService.addToCart(cartItem.product)
-        .subscribe((cartItems) => console.log('Add to cart:', cartItems))
+        .subscribe((cartItems) => store.dispatch(cartActions.loadToCart(cartItems as ICartItem[])))
       : store.dispatch(cartActions.add(cartItem.product))
     ),
   ),
