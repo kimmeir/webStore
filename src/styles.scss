@@ -1,6 +1,5 @@
 @import "variables";
-@import "theme";
-@import "fonts";
+@import "theme/fonts";
 
 html, body {
   height: 100%;
@@ -37,12 +36,18 @@ body {
   margin: 0 auto;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .mat-badge-content {
   --mat-badge-legacy-container-size: unset;
   background-color: color(primary-500) !important;
 }
 
-@include addFont(display, $display-fonts);
-@include addFont(heading, $headings-fonts);
-@include addFont(label, $label-fonts);
-@include addBodyFont(body, $body-fonts);
+@include addFont(text-display, $display-fonts);
+@include addFont(text-heading, $headings-fonts);
+@include addFont(text-label, $label-fonts);
+@include addBodyFont(text-body, $body-fonts);

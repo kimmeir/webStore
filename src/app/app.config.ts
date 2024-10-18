@@ -21,6 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([baseUrlInterceptor, errorHandlerInterceptor, jwtInterceptor, loaderInterceptor])),
     provideStore(appState),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideEffects(profileEffect, cartEffect)
+    provideEffects(profileEffect, cartEffect),
   ],
 };

@@ -8,12 +8,14 @@ import { CartService } from '../../services/requests/cart.service';
 import { Store } from '@ngrx/store';
 import { cartActions, cartClear } from '../cart/cart.actions';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 
 export const loginEffect = createEffect(
   (
     actions$ = inject(Actions),
     tokenService = inject(TokenService),
     profileService = inject(ProfileService),
+    dialog = inject(MatDialog),
     cartService = inject(CartService),
     store = inject(Store)
   ) => actions$.pipe(
@@ -22,7 +24,7 @@ export const loginEffect = createEffect(
       return profileService.login(loginData)
         .pipe(
           tap((token) => tokenService.setToken(token.access_token)),
-          tap(() => profileService.isLoginModalOpen.set(false)),
+          tap(() => dialog.closeAll()),
           switchMap(() => cartService.getCart()),
           tap((cartItems) => store.dispatch(cartActions.loadCartOnLogin(cartItems)))
         )
