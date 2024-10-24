@@ -68,9 +68,9 @@ export class HeaderComponent {
     this.router.navigate(['/cart']);
   }
 
-  onProfileClick() {
+  onAccountClick() {
     this.profileService.isAuthorized()
-      ? this.router.navigate(['/profile'])
+      ? this.router.navigate(['/account'])
       : this.openDialog();
   }
 
