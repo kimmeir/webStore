@@ -1,0 +1,56 @@
+@import "variables";
+
+$colors: (
+  primary: (
+    default: color(primary-500),
+    hover: color(primary-600),
+    disabled: color(primary-200)
+  ),
+  secondary: (
+    default: color(secondary-500),
+    hover: color(secondary-600),
+    disabled: color(secondary-200)
+  ),
+  success: (
+    default: color(success-500),
+    hover: color(success-600),
+    disabled: color(success-200)
+  ),
+  warning: (
+    default: color(warning-500),
+    hover: color(warning-600),
+    disabled: color(warning-200)
+  ),
+  danger: (
+    default: color(danger-500),
+    hover: color(danger-600),
+    disabled: color(danger-200)
+  )
+);
+
+:host(.basic-button) {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  gap: toRem(8);
+  text-transform: capitalize;
+
+  @each $colorName, $state in $colors {
+    &.basic-button-#{$colorName} {
+      color: map-get($state, default);
+
+      &:hover {
+        color: map-get($state, hover);
+      }
+
+      &:disabled {
+        color: map-get($state, disabled);
+      }
+    }
+  }
+}
+
+
+
+
