@@ -11,11 +11,15 @@ export class ProductsService {
 
   constructor(
     private http: HttpClient,
-  ) {}
+  ) {
+  }
 
-  getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>('/products')
-      // .subscribe((products) => this.products.set(products));
+  getProducts(search?: string): void {
+    const params: any = {};
+    search ? params['search'] = search : null;
+
+    this.http.get<IProduct[]>('/products', { params })
+      .subscribe((products) => this.products.set(products));
   }
 
   getProduct(id: number | string): Observable<IProduct> {

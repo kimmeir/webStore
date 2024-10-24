@@ -1,0 +1,23 @@
+<div class="nav">
+  @for (navItem of navList; track navItem.title) {
+    @if (navItem.link) {
+      <a
+        class="nav-link"
+        routerLinkActive="active"
+        [routerLink]="navItem.link"
+        (click)="navItem.click"
+      >
+        <mat-icon>{{ navItem.icon }}</mat-icon>
+        {{ navItem.title }}
+      </a>
+    } @else if (navItem.click) {
+      <a
+        class="nav-link"
+        (click)="navItem.click()"
+      >
+        <mat-icon>{{ navItem.icon }}</mat-icon>
+        {{ navItem.title }}
+      </a>
+    }
+  }
+</div>

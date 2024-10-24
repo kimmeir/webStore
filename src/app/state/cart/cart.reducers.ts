@@ -16,12 +16,10 @@ export const cartReducers = createReducer(
       )
       : [...state, product];
   }),
-  on(cartActions.remove, (state, { cartItemId }) => {
-    return state.filter((item) => item.productId !== cartItemId);
-  }),
-  on(cartActions.loadToCart, (_, { cartItems }) => {
-    console.log('loadToCart:', cartItems)
-    return cartItems
-  }),
+
+  on(cartActions.remove, (state, { cartItemId }) =>
+    state.filter((item) => item.productId !== cartItemId)
+  ),
+  on(cartActions.loadToCart, (_, { cartItems }) => cartItems),
   on(cartClear, () => initialState)
 );

@@ -31,7 +31,7 @@ export const loginCartEffect = createEffect((
     withLatestFrom(store.select(selectCartItems)),
     switchMap(([_, cartItems]) => cartItems.length
       ? cartService.bulkAddToCart(cartItems)
-      : of(cartItems)
+      : of(cartService.cartItems())
     ),
     tap((cartItems) => {
       store.dispatch(cartActions.loadToCart(cartItems as ICartItem[]))

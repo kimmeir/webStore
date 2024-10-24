@@ -11,6 +11,7 @@ export interface IUser {
   last_name: string;
   role: string;
   avatar: string;
+  stripeId?: string;
 }
 
 export interface ILoginForm {

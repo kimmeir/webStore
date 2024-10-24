@@ -1,0 +1,31 @@
+<div [formGroup]="paymentForm">
+  <div class="checkout">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="name" formControlName="name"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="Email" type="email" formControlName="email"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="Address" formControlName="address"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="ZIP Code" formControlName="zipcode"/>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <input matInput placeholder="city" formControlName="city"/>
+    </mat-form-field>
+  </div>
+  @if (elementsOptions.clientSecret) {
+    <ngx-stripe-payment
+      [stripe]="stripe"
+      [elementsOptions]="elementsOptions"
+      [options]="paymentElementOptions"
+    />
+  }
+  <app-button
+    [block]="true"
+    (click)="pay()"
+  >PAY {{ totalPrice | currency }}
+  </app-button>
+</div>

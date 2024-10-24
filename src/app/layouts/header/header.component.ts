@@ -7,12 +7,16 @@ import { LoadingService } from '../../services/loading/loading';
 import { MatToolbar } from '@angular/material/toolbar';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { MatFormField, MatOption, MatSelect } from '@angular/material/select';
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { ProfileService } from '../../services/requests/profile/profile.service';
 import { MatBadge } from '@angular/material/badge';
 import { Store } from '@ngrx/store';
 import { selectCartTotal } from '../../state/cart/cart.selectors';
 import { AsyncPipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
+import { FormsModule } from '@angular/forms';
+import { ProductsService } from '../../services/requests/products';
+import { debounceTime, map, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -28,9 +32,9 @@ import { AsyncPipe } from '@angular/common';
     MatSelect,
     MatFormField,
     MatOption,
-    LoginDialogComponent,
     MatBadge,
     AsyncPipe,
+    FormsModule,
   ],
   standalone: true
 })
@@ -38,23 +42,46 @@ export class HeaderComponent {
   loadingService = inject(LoadingService);
   profileService = inject(ProfileService);
   store = inject(Store);
+  dialog = inject(MatDialog);
 
   title = 'Andrew store app';
   isLoading = this.loadingService.isLoading;
   cartCount$ = this.store.select(selectCartTotal);
+  searchTerm = '';
+  searchObject = new Subject<string>();
 
   constructor(
     private router: Router,
+    private productService: ProductsService,
   ) {
+    this.searchObject
+      .pipe(
+        debounceTime(500),
+        map(value => value.trim().toLowerCase())
+      )
+      .subscribe(value => {
+        this.productService.getProducts(value);
+      });
   }
 
   onCartClick() {
     this.router.navigate(['/cart']);
   }
 
-  onProfileClick() {
+  onAccountClick() {
     this.profileService.isAuthorized()
-      ? this.router.navigate(['/profile'])
-      : this.profileService.isLoginModalOpen.set(true);
+      ? this.router.navigate(['/account'])
+      : this.openDialog();
+  }
+
+  openDialog() {
+    this.dialog.open(AuthDialogComponent, {
+      width: '400px',
+    });
+  }
+
+
+  onSearch(value: string) {
+    this.searchObject.next(value);
   }
 }

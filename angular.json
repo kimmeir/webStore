@@ -36,8 +36,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "@angular/material/prebuilt-themes/azure-blue.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -51,13 +50,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kB",
-                  "maximumError": "4kB"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ],
               "outputHashing": "all"
@@ -116,8 +115,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "@angular/material/prebuilt-themes/azure-blue.css",
-              "node_modules/primeng/resources/primeng.min.css"
+              "@angular/material/prebuilt-themes/azure-blue.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [

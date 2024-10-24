@@ -8,8 +8,7 @@ import { TokenService } from '../../token.service';
   providedIn: 'root'
 })
 export class ProfileService {
-  public isLoginModalOpen = signal(false);
-  public user: IUser | null = null;
+  user = signal<IUser | null>(null);
 
   constructor(
     private http: HttpClient,
@@ -17,12 +16,17 @@ export class ProfileService {
   ) {
   }
 
-  getProfile(): Observable<IUser> {
-    return this.http.get<IUser>('/profile')
+  getProfile(): void {
+    this.http.get<IUser>('/profile')
+      .subscribe((user: IUser) => this.user.set(user));
   }
 
   login(loginForm: ILoginForm): Observable<IToken> {
     return this.http.post<IToken>('/auth/login', loginForm);
+  }
+
+  signUp(signUpForm: ILoginForm): Observable<IToken> {
+    return this.http.post<IToken>('/auth/registration', signUpForm);
   }
 
   isAuthorized(): boolean {

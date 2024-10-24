@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { CardComponent } from '../../shared/components/card/card.component';
 import { IProduct, ProductsService } from '../../services/requests/products';
 import { AsyncPipe } from '@angular/common';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { cartActions } from '../../state/cart/cart.actions';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -23,12 +22,13 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 })
 export class ProductsComponent {
   productsService = inject(ProductsService);
-  products$: Observable<IProduct[]> = this.productsService.getProducts();
+  products = this.productsService.products;
 
   constructor(
     private router: Router,
     private store: Store,
   ) {
+    this.productsService.getProducts();
   }
 
   onProductClick(id: any) {

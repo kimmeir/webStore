@@ -1,0 +1,28 @@
+@import "variables";
+
+.nav {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 1rem 0;
+  background: color(white);
+  border: 1px solid color(gray-100);
+  box-shadow: $shadow-1;
+  border-radius: $rounded-md;
+
+  &-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem toRem(25);
+    color: color(gray-600);
+    text-decoration: none;
+    cursor: pointer;
+
+    &.active {
+      color: color(white);
+      background: color(primary-500);
+    }
+  }
+}

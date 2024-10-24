@@ -7,7 +7,11 @@
       routerLink="/"
       class="app-title"
     >{{ title }}</span>
-    <input type="text">
+    <input
+      type="search"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearch($event)"
+    >
     <div class="actions">
       <button
         mat-icon-button
@@ -17,11 +21,10 @@
       </button>
       <button
         mat-icon-button
-        (click)="onProfileClick()"
+        (click)="onAccountClick()"
       >
         <mat-icon>account_circle</mat-icon>
       </button>
     </div>
   </div>
 </header>
-<app-login-dialog/>

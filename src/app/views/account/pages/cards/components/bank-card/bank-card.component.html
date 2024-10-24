@@ -1,0 +1,18 @@
+<div
+  class="card card-{{cardItem.card?.brand}}"
+>
+  <div class="card-header">
+    <mat-icon class="card-header-action">more_horiz</mat-icon>
+  </div>
+  <div class="card-number">
+    <div class="card-number-title text-label-5"
+    >Card number
+    </div>
+    <div class="card-number-number text-body-xl-400"
+    >**** **** **** {{ cardItem.card?.last4 }}
+    </div>
+  </div>
+  <div class="card-details">
+    <div class="card-details-brand">{{ cardItem.card?.brand }}</div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { profileGuard } from './views/profile/profile.guard';
+import { accountGuard } from './views/account/account.guard';
 
 export const routes: Routes = [
   {
@@ -29,8 +29,28 @@ export const routes: Routes = [
     loadComponent: () => import('./views/cart/cart.component').then(m => m.CartComponent),
   },
   {
-    path: 'profile',
-    loadComponent: () => import('./views/profile/profile.component').then(m => m.ProfileComponent),
-    canActivate: [profileGuard]
+    path: 'checkout',
+    loadComponent: () => import('./views/checkout/checkout.component').then(m => m.CheckoutComponent),
+  },
+  {
+    path: 'account',
+    loadComponent: () => import('./views/account/account.component').then(m => m.AccountComponent),
+    canActivate: [accountGuard],
+    children: [
+      {
+        path: '',
+        // loadComponent: () => import('./views/account/pages/settings/settings.component').then(m => m.SettingsComponent),
+        redirectTo: 'settings',
+        pathMatch: 'full'
+      },
+      {
+        path: 'billing',
+        loadComponent: () => import('./views/account/pages/cards/cards.component').then(m => m.CardsComponent),
+      },
+      {
+        path: 'settings',
+        loadComponent: () => import('./views/account/pages/settings/settings.component').then(m => m.SettingsComponent),
+      }
+    ]
   }
 ];

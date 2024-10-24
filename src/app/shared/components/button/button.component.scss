@@ -1,0 +1,13 @@
+@import 'theme/components/button';
+
+.app-button {
+  height: 48px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  padding: 1rem 2rem;
+  @include button-colors($colors);
+
+  &-block {
+    width: 100%;
+  }
+}

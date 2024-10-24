@@ -1,9 +1,18 @@
-<div class="products">
-  @for (product of products$ | async; track product.id) {
-    <app-product-card
-      [product]="product"
-      (click)="onProductClick(product.id)"
-      (onAddToCart)="onAddToCart($event)"
-    />
+@defer {
+  @if (products().length !== 0) {
+    <div class="products">
+
+      @for (product of products(); track product.id) {
+        <app-product-card
+          [product]="product"
+          (click)="onProductClick(product.id)"
+          (onAddToCart)="onAddToCart($event)"
+        />
+      }
+    </div>
+  } @else {
+    <h4 class="center">No products found</h4>
   }
-</div>
+} @loading (minimum 300) {
+  <span>Loading...</span>
+}

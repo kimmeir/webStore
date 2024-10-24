@@ -1,0 +1,58 @@
+<form
+  class="sign-in-form"
+  [formGroup]="signUpForm"
+  (ngSubmit)="onSubmit()"
+>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input
+      matInput
+      placeholder="Email"
+      type="email"
+      formControlName="email"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>First name</mat-label>
+    <input
+      matInput
+      placeholder="First name"
+      type="text"
+      formControlName="first_name"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Second name</mat-label>
+    <input
+      matInput
+      placeholder="Second name"
+      type="text"
+      formControlName="last_name"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input
+      matInput
+      placeholder="Password"
+      type="password"
+      formControlName="password"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Confirm password</mat-label>
+    <input
+      matInput
+      placeholder="Confirm password"
+      type="password"
+      formControlName="password_confirmation"
+    />
+  </mat-form-field>
+  <app-button
+    type="submit"
+    [block]="true"
+    [disabled]="signUpForm.invalid"
+  >
+    Sign Up
+  </app-button>
+</form>
