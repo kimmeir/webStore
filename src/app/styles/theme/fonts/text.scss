@@ -1,161 +1,163 @@
+@import "functions";
+
 $display-fonts: (
   (
-    'font-size': 4rem,
-    'line-height': 4.5rem,
+    'font-size': toRem(64),
+    'line-height': toRem(72),
   ),
   (
-    'font-size': 3.5rem,
-    'line-height': 4rem,
+    'font-size': toRem(56),
+    'line-height': toRem(64),
   ),
   (
-    'font-size': 3rem,
-    'line-height': 3.5rem,
+    'font-size': toRem(48),
+    'line-height': toRem(56),
   ),
   (
-    'font-size': 2.5rem,
-    'line-height': 3rem,
+    'font-size': toRem(40),
+    'line-height': toRem(48),
   ),
   (
-    'font-size': 2.25rem,
-    'line-height': 2.5rem,
+    'font-size': toRem(36),
+    'line-height': toRem(44),
   )
 );
 
 $headings-fonts: (
   (
-    'font-size': 2.25rem,
-    'line-height': 2.5rem,
+    'font-size': toRem(32),
+    'line-height': toRem(40),
   ),
   (
-    'font-size': 2rem,
-    'line-height': 2.25rem,
+    'font-size': toRem(28),
+    'line-height': toRem(32),
   ),
   (
-    'font-size': 1.75rem,
-    'line-height': 2rem,
+    'font-size': toRem(24),
+    'line-height': toRem(32),
   ),
   (
-    'font-size': 1.5rem,
-    'line-height': 1.75rem,
+    'font-size': toRem(16),
+    'line-height': toRem(56),
   ),
   (
-    'font-size': 1.25rem,
-    'line-height': 1.5rem,
+    'font-size': toRem(14),
+    'line-height': toRem(48),
   )
 );
 
 $label-fonts: (
   (
-    'font-size': 1.25rem,
-    'line-height': 1.5rem,
+    'font-size': toRem(18),
+    'line-height': toRem(28),
   ),
   (
-    'font-size': 1.125rem,
-    'line-height': 1.25rem,
+    'font-size': toRem(16),
+    'line-height': toRem(24),
   ),
   (
-    'font-size': 1rem,
-    'line-height': 1.125rem,
+    'font-size': toRem(14),
+    'line-height': toRem(20),
   ),
   (
-    'font-size': 0.875rem,
-    'line-height': 1rem,
+    'font-size': toRem(12),
+    'line-height': toRem(150),
   ),
   (
-    'font-size': 0.75rem,
-    'line-height': 0.875rem,
+    'font-size': toRem(11),
+    'line-height': toRem(16),
   )
 );
 
 $body-fonts: (
   xxl:(
     400: (
-      'font-size': 1.5rem,
-      'line-height': 2rem,
+      'font-size': toRem(24),
+      'line-height': toRem(32),
     )
   ),
   xl: (
     400: (
-      'font-size': 1.25rem,
-      'line-height': 1.75rem,
+      'font-size': toRem(20),
+      'line-height': toRem(28),
     ),
     500: (
-      'font-size': 1.125rem,
-      'line-height': 1.5rem,
+      'font-size': toRem(20),
+      'line-height': toRem(28),
     ),
     600: (
-      'font-size': 1rem,
-      'line-height': 1.25rem,
+      'font-size': toRem(20),
+      'line-height': toRem(28),
     ),
   ),
   l: (
     400: (
-      'font-size': 1rem,
-      'line-height': 1.25rem,
+      'font-size': toRem(18),
+      'line-height': toRem(24),
     ),
     500: (
-      'font-size': 0.875rem,
-      'line-height': 1rem,
+      'font-size': toRem(18),
+      'line-height': toRem(24),
     ),
     600: (
-      'font-size': 0.75rem,
-      'line-height': 0.875rem,
+      'font-size': toRem(18),
+      'line-line-height': toRem(24),
     ),
   ),
   m: (
     400: (
-      'font-size': 0.875rem,
-      'line-height': 1rem,
+      'font-size': toRem(16),
+      'line-height': toRem(24),
     ),
     500: (
-      'font-size': 0.75rem,
-      'line-height': 0.875rem,
+      'font-size': toRem(16),
+      'line-height': toRem(24),
     ),
     600: (
-      'font-size': 0.625rem,
-      'line-height': 0.75rem,
+      'font-size': toRem(16),
+      'line-height': toRem(24),
     ),
   ),
   s: (
     400: (
-      'font-size': 0.75rem,
-      'line-height': 0.875rem,
+      'font-size': toRem(14),
+      'line-height': toRem(20),
     ),
     500: (
-      'font-size': 0.625rem,
-      'line-height': 0.75rem,
+      'font-size': toRem(14),
+      'line-height': toRem(20),
     ),
     600: (
-      'font-size': 0.5rem,
-      'line-height': 0.625rem,
+      'font-size': toRem(14),
+      'line-height': toRem(20),
     ),
   ),
   tiny: (
     400: (
-      'font-size': 0.625rem,
-      'line-height': 0.75rem,
+      'font-size': toRem(12),
+      'line-height': toRem(16),
     ),
     500: (
-      'font-size': 0.5rem,
-      'line-height': 0.625rem,
+      'font-size': toRem(12),
+      'line-height': toRem(16),
     ),
     600: (
-      'font-size': 0.375rem,
-      'line-height': 0.5rem,
+      'font-size': toRem(12),
+      'line-height': toRem(16),
     ),
   ),
   xs: (
     400: (
-      'font-size': 0.5rem,
-      'line-height': 0.625rem,
+      'font-size': toRem(11),
+      'line-height': toRem(12),
     ),
     500: (
-      'font-size': 0.375rem,
-      'line-height': 0.5rem,
+      'font-size': toRem(11),
+      'line-height': toRem(12),
     ),
     600: (
-      'font-size': 0.25rem,
-      'line-height': 0.375rem,
+      'font-size': toRem(11),
+      'line-height': toRem(12),
     ),
   ),
 );
