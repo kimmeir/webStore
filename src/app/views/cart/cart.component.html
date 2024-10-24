@@ -1,34 +1,42 @@
-@if (cart$ | async) {
-  <div class="cart" *ngIf="cart$">
-    @for (item of cart$ | async; let idx = $index; track idx) {
-      <div
-        class="product"
-        [routerLink]="['/products/' + item.productId]"
-      >
-        <div class="product-image">
-          @if (item.product.images?.[0]) {
-            <img [src]="item.product.images?.[0]" [alt]="item.product.title"/>
-          } @else {
-            <img src="/placeholder.png" [alt]="item.product.title"/>
-          }
-        </div>
-        <span class="product-title">{{ item.product.title }}</span>
-        <span class="product-price">{{ item.product.price | currency }}</span>
-        <span class="product-quantity">Quantity: {{ item.quantity }}</span>
+<ng-container
+  *ngIf="cart$ | async as cart"
+>
+  @if (cart.length !== 0) {
+    <div class="cart">
+      @for (item of cart; let idx = $index; track idx) {
         <div
-          class="actions">
-          <button
-            mat-icon-button
-            (click)="onRemoveFromCart($event, item.productId)"
-          >
-            <mat-icon>remove_shopping_cart</mat-icon>
-          </button>
+          class="product"
+          [routerLink]="['/products/' + item.productId]"
+        >
+          <div class="product-image">
+            @if (item.product.images?.[0]) {
+              <img [src]="item.product.images?.[0]" [alt]="item.product.title"/>
+            } @else {
+              <img src="/placeholder.png" [alt]="item.product.title"/>
+            }
+          </div>
+          <span class="product-title">{{ item.product.title }}</span>
+          <span class="product-price">{{ item.product.price | currency }}</span>
+          <span class="product-quantity">Quantity: {{ item.quantity }}</span>
+          <div
+            class="actions">
+            <button
+              mat-icon-button
+              (click)="onRemoveFromCart($event, item.productId)"
+            >
+              <mat-icon>remove_shopping_cart</mat-icon>
+            </button>
+          </div>
         </div>
-      </div>
-    }
-  </div>
-} @else {
-  <div class="cart-empty">
-    <h3>No items in cart</h3>
-  </div>
-}
+      }
+
+      <app-button [routerLink]="['/checkout']">
+        Checkout
+      </app-button>
+    </div>
+  } @else {
+    <div class="cart-empty">
+      <h3>No items in cart</h3>
+    </div>
+  }
+</ng-container>

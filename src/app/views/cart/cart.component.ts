@@ -8,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { selectCartItems } from '../../state/cart/cart.selectors';
 import { ProfileService } from '../../services/requests/profile/profile.service';
 import { cartActions } from '../../state/cart/cart.actions';
+import { ButtonComponent } from '../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-cart',
@@ -20,6 +21,7 @@ import { cartActions } from '../../state/cart/cart.actions';
     NgIf,
     MatIconButton,
     RouterLink,
+    ButtonComponent,
   ],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
