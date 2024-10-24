@@ -2,4 +2,8 @@
   @return rgba(var(--color-#{$color}), $opacity);
 }
 
+$base-font-size: 16;
 
+@function toRem($px) {
+  @return $px / $base-font-size * 1rem;
+}
