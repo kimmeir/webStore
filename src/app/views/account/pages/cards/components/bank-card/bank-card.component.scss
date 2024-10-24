@@ -1,0 +1,37 @@
+@import "../../../../../../styles/variables";
+
+.card {
+  display: grid;
+  grid-template-rows: 25px 52px 40px;
+  align-content: space-between;
+  width: 296px;
+  height: 196px;
+  border-radius: $rounded-md;
+  color: color(white);
+  padding: 1.5rem;
+  box-sizing: border-box;
+
+  &-header {
+    display: flex;
+
+    &-action {
+      cursor: pointer;
+      margin: 0 0 0 auto;
+    }
+  }
+
+  &-number {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+    gap: 0.5rem;
+
+    &-title {
+      opacity: 0.5;
+    }
+  }
+
+  &-visa {
+    background: radial-gradient(98.14% 214.97% at 0% 0%, #1B6392 0%, #124261 100%);
+  }
+}
