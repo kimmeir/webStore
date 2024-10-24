@@ -11,6 +11,7 @@ import { provideEffects } from '@ngrx/effects';
 import * as profileEffect from './state/profile/profile.effects';
 import * as cartEffect from './state/cart/cart.effects';
 import { appState } from './state/app.state';
+import { provideNgxStripe } from 'ngx-stripe';
 // import { provideApollo } from 'apollo-angular';
 // import { createHttpLink, InMemoryCache } from '@apollo/client/core';
 
@@ -22,5 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideStore(appState),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideEffects(profileEffect, cartEffect),
+    provideNgxStripe('pk_test_51IP0R5In4Fj56JUNDVbWFsd0OLr2Wt9UytD80lDEMOGA7LsxTK7SG1XA5lcudzNV4j61jL4TLGDEFLDcHk8RNE9s00d7LQAI1E'),
   ],
 };
