@@ -38,6 +38,12 @@ export const routes: Routes = [
     canActivate: [accountGuard],
     children: [
       {
+        path: '',
+        // loadComponent: () => import('./views/account/pages/settings/settings.component').then(m => m.SettingsComponent),
+        redirectTo: 'settings',
+        pathMatch: 'full'
+      },
+      {
         path: 'billing',
         loadComponent: () => import('./views/account/pages/cards/cards.component').then(m => m.CardsComponent),
       },

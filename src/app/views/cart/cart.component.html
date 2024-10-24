@@ -30,7 +30,10 @@
         </div>
       }
 
-      <app-button [routerLink]="['/checkout']">
+      <app-button
+        [disabled]="true"
+        [routerLink]="['/checkout']"
+      >
         Checkout
       </app-button>
     </div>

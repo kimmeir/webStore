@@ -1,0 +1,53 @@
+<app-info-block>
+  <ng-container title>account settings</ng-container>
+  <div class="profile-info">
+    <div class="avatar">
+      <img
+        ngSrc="/avatar-placeholder.svg"
+        alt="avatar"
+        height="176" width="176"/>
+    </div>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="inputs">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            placeholder="First Name"
+            type="text"
+            formControlName="first_name"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            placeholder="Last Name"
+            type="text"
+            formControlName="last_name"
+          />
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            placeholder="Email"
+            type="email"
+            formControlName="email"
+          />
+        </mat-form-field>
+      </div>
+      <app-button
+        type="submit"
+        [disabled]="form.invalid"
+      >
+        Save
+      </app-button>
+    </form>
+  </div>
+</app-info-block>
