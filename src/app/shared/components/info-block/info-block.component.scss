@@ -1,0 +1,23 @@
+@import "variables";
+
+.info-block {
+  background: color(white);
+  border: 1px solid color(gray-100);
+  border-radius: $rounded-md;
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid color(gray-100);
+
+    &-title {
+      text-transform: uppercase;
+    }
+  }
+
+  &-content {
+    padding: 1.5rem;
+  }
+}
