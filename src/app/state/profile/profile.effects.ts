@@ -26,7 +26,10 @@ export const loginEffect = createEffect(
           tap((token) => tokenService.setToken(token.access_token)),
           tap(() => dialog.closeAll()),
           switchMap(() => cartService.getCart()),
-          tap((cartItems) => store.dispatch(cartActions.loadCartOnLogin(cartItems)))
+          tap((cartItems) => {
+            cartService.cartItems.set(cartItems)
+            store.dispatch(cartActions.loadCartOnLogin(cartItems))
+          })
         )
     })
   ),
