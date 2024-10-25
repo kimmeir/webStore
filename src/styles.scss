@@ -47,6 +47,10 @@ body {
   background-color: color(primary-500) !important;
 }
 
+.mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 0;
+}
+
 @include addFont(text-display, $display-fonts);
 @include addFont(text-heading, $headings-fonts);
 @include addFont(text-label, $label-fonts);
