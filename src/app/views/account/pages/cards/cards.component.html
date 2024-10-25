@@ -2,7 +2,10 @@
   <app-info-block>
     <ng-container title>Payment methods</ng-container>
     <ng-container actions>
-      <button basic-button>
+      <button
+        basic-button
+        (click)="addCard()"
+      >
         add card
         <ng-container append>
           <mat-icon>arrow_forward</mat-icon>
@@ -20,22 +23,4 @@
     }
   </app-info-block>
 </div>
-<!--  <app-button-->
-<!--    *ngIf="!newCard()"-->
-<!--    (click)="newCard.set(true)"-->
-<!--  >add payment method-->
-<!--  </app-button>-->
-<!--  @if (newCard()) {-->
-<!--    <ngx-stripe-elements-->
-<!--      [stripe]="stripe"-->
-<!--      [elementsOptions]="elementsOptions"-->
-<!--    >-->
-<!--      <ngx-stripe-card [options]="cardOptions"/>-->
-<!--    </ngx-stripe-elements>-->
-<!--    <app-button-->
 
-<!--      (click)="createCard()"-->
-<!--    >-->
-<!--      create card-->
-<!--    </app-button>-->
-<!--  }-->

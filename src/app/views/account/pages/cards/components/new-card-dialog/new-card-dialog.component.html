@@ -1,0 +1,28 @@
+<app-info-block>
+  <ng-container title>New Card</ng-container>
+  <ng-container actions>
+    <mat-icon
+      class="pointer"
+      (click)="close()"
+    >close
+    </mat-icon>
+  </ng-container>
+  <div class="new-card">
+    <div class="new-card-form">
+      <label for="card-number" class="text-body-s-500">Card number
+        <div id="card-number" class="stripe-input"></div>
+      </label>
+      <label for="card-exp" class="text-body-s-500">Expiry
+        <div id="card-exp" class="stripe-input"></div>
+      </label>
+      <label for="card-cvc" class="text-body-s-500">CVC
+        <div id="card-cvc" class="stripe-input"></div>
+      </label>
+    </div>
+    <app-button
+      (click)="createCard()"
+    >
+      Add Card
+    </app-button>
+  </div>
+</app-info-block>
