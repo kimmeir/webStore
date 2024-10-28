@@ -16,3 +16,8 @@
     grid-column: 1 / span 2;
   }
 }
+
+.choose-payment {
+  display: flex;
+  flex-direction: column;
+}

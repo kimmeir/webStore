@@ -27,7 +27,6 @@ import { DataRowOutlet } from '@angular/cdk/table';
 export class AccountComponent {
   profileService = inject(ProfileService);
   store = inject(Store);
-  user = this.profileService.user;
 
   constructor() {
     this.profileService.getProfile();

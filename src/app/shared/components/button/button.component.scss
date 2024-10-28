@@ -1,9 +1,13 @@
 @import 'theme/components/button';
 
 .app-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
   height: 48px;
   text-transform: uppercase;
-  transition: all 0.3s;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
   padding: 1rem 2rem;
   @include button-colors($colors);
 

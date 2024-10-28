@@ -1,14 +1,16 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ILoginForm, IToken, IUser } from './profile.typings';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { TokenService } from '../../token.service';
+import { StripeService } from '../stripe.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
   user = signal<IUser | null>(null);
+  stripeService = inject(StripeService);
 
   constructor(
     private http: HttpClient,
@@ -18,6 +20,12 @@ export class ProfileService {
 
   getProfile(): void {
     this.http.get<IUser>('/profile')
+      .pipe(
+        tap((user: IUser) => {
+          if (user?.stripeId)
+            this.stripeService.getCustomer(user.stripeId)
+        })
+      )
       .subscribe((user: IUser) => this.user.set(user));
   }
 

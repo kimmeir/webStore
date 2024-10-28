@@ -1,0 +1,32 @@
+@import "variables";
+
+.cart {
+  display: grid;
+  grid-template-columns: 1fr minmax(300px, 450px);
+  gap: 2rem;
+
+  &-items-header {
+    display: grid;
+    grid-template-columns: 25px 72px 1fr 100px 70px 100px;
+    gap: 2rem;
+    height: 50px;
+    align-items: center;
+    justify-items: start;
+    text-transform: uppercase;
+    background-color: color(gray-100);
+    padding: 0 1.5rem;
+
+    span:first-child {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+  }
+
+  &-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+  }
+}
+

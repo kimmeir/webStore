@@ -1,0 +1,28 @@
+<div class="product">
+  <mat-icon
+    class="product-remove"
+    (click)="removeItem($event)"
+  >cancel
+  </mat-icon>
+  <div class="product-image">
+    @if (item.product.images?.[0]) {
+      <img [src]="item.product.images?.[0]" [alt]="item.product.title"/>
+    } @else {
+      <img src="/placeholder.png" [alt]="item.product.title"/>
+    }
+  </div>
+  <a
+    class="product-title "
+    [routerLink]="['/products/' + item.productId]"
+  >{{ item.product.title }}
+  </a>
+  <span class="product-price">{{ item.product.price | currency }}</span>
+  <input
+    [(ngModel)]="item.quantity"
+    min="1"
+    max="10"
+    class="product-quantity"
+    type="number"
+  >
+  <span class="product-price">{{ item.product.price * item.quantity | currency }}</span>
+</div>

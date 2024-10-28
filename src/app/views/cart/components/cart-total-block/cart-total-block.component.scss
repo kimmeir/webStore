@@ -1,0 +1,10 @@
+.total-block {
+  &-info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-total {
+    padding: 1.5rem 0;
+  }
+}

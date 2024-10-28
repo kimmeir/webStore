@@ -1,0 +1,23 @@
+<div class="cart-items">
+  <app-info-block [noPadding]="true">
+    <ng-container title>Shopping Card</ng-container>
+    <ng-container *ngIf="cart$ | async as cart">
+      @if (cart.length !== 0) {
+        <div class="cart-items-header text-label-4">
+          <span>Products</span>
+          <span>Price</span>
+          <span>Quantity</span>
+          <span>Sub-Total</span>
+        </div>
+        @for (item of cart; let idx = $index; track idx) {
+          <app-cart-item
+            [item]="item"
+            (onRemoveFromCart)="onRemoveFromCart($event)"
+          />
+        }
+      } @else {
+        <div class="cart-empty text-heading-3">No items in cart</div>
+      }
+    </ng-container>
+  </app-info-block>
+</div>

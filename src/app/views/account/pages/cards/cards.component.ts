@@ -42,6 +42,7 @@ export class CardsComponent {
 
   user = this.profileService.user;
   cards = this.stripeService.cards;
+  customer = this.stripeService.customer;
 
   ngOnInit() {
     if (this.user()?.stripeId !== undefined) {

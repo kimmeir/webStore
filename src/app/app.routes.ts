@@ -27,10 +27,21 @@ export const routes: Routes = [
   {
     path: 'cart',
     loadComponent: () => import('./views/cart/cart.component').then(m => m.CartComponent),
-  },
-  {
-    path: 'checkout',
-    loadComponent: () => import('./views/checkout/checkout.component').then(m => m.CheckoutComponent),
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./views/cart/pages/cart-items/cart-items.component').then(m => m.CartItemsComponent),
+      },
+      {
+        path: 'checkout',
+        canActivate: [accountGuard],
+        loadComponent: () => import('./views/cart/pages/checkout/checkout.component').then(m => m.CheckoutComponent),
+      },
+      {
+        path: 'success',
+        loadComponent: () => import('./views/cart/pages/cart-success/cart-success.component').then(m => m.CartSuccessComponent),
+      }
+    ]
   },
   {
     path: 'account',
@@ -39,7 +50,6 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        // loadComponent: () => import('./views/account/pages/settings/settings.component').then(m => m.SettingsComponent),
         redirectTo: 'settings',
         pathMatch: 'full'
       },
