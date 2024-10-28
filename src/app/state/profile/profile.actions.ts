@@ -6,10 +6,6 @@ export const profileActions = createActionGroup({
   events: {
     login: (loginForm: ILoginForm) => loginForm,
     loadProfileSuccess: (profile: IUser) => ({ profile }),
-    // loadProfileError: (error) => ({ error }),
-    // updateProfile: (profile) => ({ profile }),
-    // updateProfileSuccess: (profile) => ({ profile }),
-    // updateProfileError: (error) => ({ error }),
   }
 });
 

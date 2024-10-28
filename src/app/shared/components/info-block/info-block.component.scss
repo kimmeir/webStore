@@ -4,6 +4,7 @@
   background: color(white);
   border: 1px solid color(gray-100);
   border-radius: $rounded-md;
+  margin-bottom: 2rem;
 
   &-header {
     display: flex;
@@ -19,5 +20,9 @@
 
   &-content {
     padding: 1.5rem;
+
+    &.no-padding {
+      padding: 0;
+    }
   }
 }

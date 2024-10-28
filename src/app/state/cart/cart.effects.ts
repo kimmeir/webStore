@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { exhaustMap, first, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { CartService, ICartItem } from '../../services/requests/cart.service';
 import { cartActions, cartTriggerAction } from './cart.actions';
 import { Store } from '@ngrx/store';
@@ -66,6 +66,7 @@ export const cartRemoveEffect = createEffect((
     ofType(cartActions.removeTrigger),
     tap((cartRemoveAction) => profileService.isAuthorized()
       ? cartService.removeFromCart(cartRemoveAction.cartItemId)
+        .pipe(first())
         .subscribe((cartItems) => store.dispatch(cartActions.loadToCart(cartItems as ICartItem[])))
       : store.dispatch(cartActions.remove(cartRemoveAction.cartItemId))
     ),

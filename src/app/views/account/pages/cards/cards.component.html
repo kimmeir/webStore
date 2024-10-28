@@ -15,7 +15,10 @@
     @if (cards().length) {
       <div class="cards">
         @for (card of cards(); track card.id) {
-          <app-bank-card [cardItem]="card"/>
+          <app-bank-card
+            [cardItem]="card"
+            [defaultCard]="customer()?.metadata?.default_source"
+          />
         }
       </div>
     } @else {

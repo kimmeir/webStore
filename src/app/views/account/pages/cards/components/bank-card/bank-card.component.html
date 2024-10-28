@@ -2,7 +2,28 @@
   class="card card-{{cardItem.card?.brand}}"
 >
   <div class="card-header">
-    <mat-icon class="card-header-action">more_horiz</mat-icon>
+    <div class="card-header-default">
+      <mat-icon *ngIf="defaultCard === cardItem.id">star</mat-icon>
+    </div>
+    <div class="actions">
+
+      <mat-icon
+        *ngIf="defaultCard !== cardItem.id"
+        class="card-header-action"
+        [matMenuTriggerFor]="menu"
+      >more_horiz
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="setAsDefault()">
+            <mat-icon>star</mat-icon>
+            <span>Set as default</span>
+          </button>
+          <button mat-menu-item (click)="deleteCard()">
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </mat-icon>
+    </div>
   </div>
   <div class="card-number">
     <div class="card-number-title text-label-5"

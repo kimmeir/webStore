@@ -1,0 +1,40 @@
+<app-info-block>
+  <ng-container title>Billing Information</ng-container>
+  <div [formGroup]="paymentForm">
+    <div class="checkout">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput placeholder="name" formControlName="name"/>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput placeholder="Email" type="email" formControlName="email"/>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput placeholder="Address" formControlName="address"/>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput placeholder="ZIP Code" formControlName="zipcode"/>
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <input matInput placeholder="city" formControlName="city"/>
+      </mat-form-field>
+    </div>
+  </div>
+</app-info-block>
+<app-info-block>
+  <ng-container title>Payment Option</ng-container>
+  <mat-radio-group
+    class="choose-payment"
+    [(ngModel)]="methodToPay"
+  >
+    @for (method of paymentMethods(); track method.value) {
+      <mat-radio-button value="{{ method.value }}">{{ method.title }}</mat-radio-button>
+    }
+  </mat-radio-group>
+  <!--  @if (elementsOptions.clientSecret && methodToPay === 'new') {-->
+  <!--    <ngx-stripe-payment-->
+  <!--      [stripe]="stripe"-->
+  <!--      [elementsOptions]="elementsOptions"-->
+  <!--      [options]="paymentElementOptions"-->
+  <!--    />-->
+  <!--  }-->
+</app-info-block>

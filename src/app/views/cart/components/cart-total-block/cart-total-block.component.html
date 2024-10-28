@@ -1,0 +1,20 @@
+<div class="total-block">
+  <app-info-block>
+    <ng-container title>cart totals</ng-container>
+    <div class="total-block-info total-block-total">
+      <span>Total</span>
+      <span>{{ cartTotalPrice$ | async | currency }}</span>
+    </div>
+    <app-button
+      [block]="true"
+      [disabled]="totalButtons()[router.url].isDisabled === undefined
+        ? !(cart$ | async)?.length
+        : !totalButtons()[router.url].isDisabled
+"
+      (click)="totalButtons()[router.url].onClick()"
+    >
+      {{ totalButtons()[router.url].text }}
+      <mat-icon>arrow_forward</mat-icon>
+    </app-button>
+  </app-info-block>
+</div>
