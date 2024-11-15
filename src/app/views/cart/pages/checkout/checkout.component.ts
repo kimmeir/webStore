@@ -1,17 +1,15 @@
-import { Component, computed, effect, inject, signal, ViewChild } from '@angular/core';
-import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, Validators } from '@angular/forms';
+import { Component, computed, inject } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { injectStripe, StripePaymentElementComponent } from 'ngx-stripe';
 import { StripeService } from '../../../../services/requests/stripe.service';
 import { ProfileService } from '../../../../services/requests/profile/profile.service';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { Store } from '@ngrx/store';
 import { selectCartTotalPrice } from '../../../../state/cart/cart.selectors';
-import { CurrencyPipe, JsonPipe } from '@angular/common';
 import { InfoBlockComponent } from '../../../../shared/components/info-block/info-block.component';
-import { MatIcon } from '@angular/material/icon';
 import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { NewCardFormComponent } from '../../../../shared/components/new-card-form/new-card-form.component';
+import { OrderService } from '../../../../services/requests/order.service';
 
 @Component({
   selector: 'app-checkout',
@@ -20,30 +18,22 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   standalone: true,
   imports: [
     MatInputModule,
-    StripePaymentElementComponent,
     ReactiveFormsModule,
     ButtonComponent,
-    CurrencyPipe,
     InfoBlockComponent,
-    MatIcon,
     MatRadioGroup,
     MatRadioButton,
     FormsModule,
-    JsonPipe
+    NewCardFormComponent
   ]
 })
 export class CheckoutComponent {
-  @ViewChild(StripePaymentElementComponent)
-  paymentElement!: StripePaymentElementComponent;
-
-  private readonly fb = inject(UntypedFormBuilder);
   private stripeService = inject(StripeService);
   private profileService = inject(ProfileService);
-  private snackBar = inject(MatSnackBar);
+  private orderService = inject(OrderService);
 
-  user = this.profileService.user;
   customer = this.stripeService.customer;
-  methodToPay = 'default';
+  methodToPay = this.orderService.paymentMethod;
   stripeAmount: number = 0;
 
   constructor(private store: Store) {
@@ -52,15 +42,7 @@ export class CheckoutComponent {
     this.store.select(selectCartTotalPrice)
       .subscribe(amount => {
         this.stripeAmount = Math.round(amount * 100);
-        // this.paymentForm.patchValue({ amount: stripeAmount })
       });
-
-    effect(() => {
-      this.paymentForm.patchValue({
-        name: this.user()?.first_name,
-        email: this.user()?.email
-      })
-    });
   }
 
   paymentMethods = computed(() => [
@@ -72,36 +54,16 @@ export class CheckoutComponent {
     {
       title: 'New card',
       value: 'new',
-      isVisible: false
+      isVisible: true
     }
   ].filter(item => item.isVisible))
 
-  paymentForm = this.fb.group({
-    name: ['', [Validators.required]],
-    email: ['', [Validators.required]],
-    address: [''],
-    zipcode: [''],
-    city: [''],
-    amount: [0, [Validators.required]]
-  });
-
-  stripe = injectStripe(this.stripeService.key);
-  paying = signal(false);
-
-  ngOnInit() {
-    this.stripeService
-      .createPaymentIntent({
-        amount: this.stripeAmount,
-        currency: 'usd'
-      })
-      .subscribe(pi => {
-        if (!pi.client_secret) {
-          this.snackBar.open('Problem to init checkout', 'Close');
-          return;
-        }
-        this.stripeService.pi_secret.set(pi.client_secret);
-      });
-  }
-
-  // TODO: add possibility to pay by new card
+  // paymentForm = this.fb.group({
+  //   name: ['', [Validators.required]],
+  //   email: ['', [Validators.required]],
+  //   address: [''],
+  //   zipcode: [''],
+  //   city: [''],
+  //   amount: [0, [Validators.required]]
+  // });
 }

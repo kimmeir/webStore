@@ -39,7 +39,7 @@ export const routes: Routes = [
       },
       {
         path: 'success',
-        loadComponent: () => import('./views/cart/pages/cart-success/cart-success.component').then(m => m.CartSuccessComponent),
+        loadComponent: () => import('./views/cart/pages/checkout-success/checkout-success.component').then(m => m.CheckoutSuccessComponent),
       }
     ]
   },
@@ -52,6 +52,14 @@ export const routes: Routes = [
         path: '',
         redirectTo: 'settings',
         pathMatch: 'full'
+      },
+      {
+        path: 'orders',
+        loadComponent: () => import('./views/account/pages/orders/orders.component').then(m => m.OrdersComponent),
+      },
+      {
+        path: 'orders/:id',
+        loadComponent: () => import('./views/account/pages/orders/order-details/order-details.component').then(m => m.OrderDetailsComponent),
       },
       {
         path: 'billing',

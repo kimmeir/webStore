@@ -1,0 +1,28 @@
+<div class="checkout-success container">
+  <div class="checkout-success-wrapper">
+    <img
+      class="checkout-success-image"
+      src="/CheckCircle.svg"
+      alt="checkout-success"
+    >
+    <div class="checkout-success-content">
+      <h3 class="text-heading-3">Your order is successfully place</h3>
+      <span class="text-body-s-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </span>
+    </div>
+    <div class="checkout-success-actions">
+      <app-button
+        [routerLink]="['/account']"
+        variant="outlined"
+      >
+        <mat-icon>dashboard</mat-icon>
+        <span>Go to Dashboard</span>
+      </app-button>
+      <app-button [disabled]="true">
+        <span>View Order</span>
+        <mat-icon>arrow_forward</mat-icon>
+      </app-button>
+    </div>
+  </div>
+</div>

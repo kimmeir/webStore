@@ -33,7 +33,8 @@ export class AccountComponent {
   }
 
   navigationList: INavItem[] = [
-    { title: 'Billing', link: '/account/billing', icon: 'credit_card' },
+    { title: 'Order History', link: '/account/orders', icon: 'storefront' },
+    { title: 'Cards & Address', link: '/account/billing', icon: 'credit_card' },
     { title: 'Settings', link: '/account/settings', icon: 'settings' },
     { title: 'Logout', click: () => this.store.dispatch(profileLogout()), icon: 'logout' }
   ];

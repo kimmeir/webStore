@@ -14,7 +14,8 @@ export class ProfileService {
 
   constructor(
     private http: HttpClient,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private stripeService: StripeService
   ) {
   }
 

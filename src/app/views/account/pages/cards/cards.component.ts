@@ -3,7 +3,6 @@ import { ProfileService } from '../../../../services/requests/profile/profile.se
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { StripeService } from '../../../../services/requests/stripe.service';
 import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
-import { StripeCardComponent, StripeElementsDirective, StripePaymentElementComponent } from 'ngx-stripe';
 import { BankCardComponent } from './components/bank-card/bank-card.component';
 import { InfoBlockComponent } from '../../../../shared/components/info-block/info-block.component';
 import { MatButton } from '@angular/material/button';
@@ -19,12 +18,7 @@ import { NewCardDialogComponent } from './components/new-card-dialog/new-card-di
     ButtonComponent,
     AsyncPipe,
     JsonPipe,
-    StripeElementsDirective,
-    StripePaymentElementComponent,
-    StripeCardComponent,
     NgIf,
-    StripeCardComponent,
-    StripeCardComponent,
     BankCardComponent,
     InfoBlockComponent,
     MatButton,
