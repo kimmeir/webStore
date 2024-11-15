@@ -1,6 +1,10 @@
 .cart {
   display: grid;
-  grid-template-columns: 1fr minmax(300px, 450px);
   gap: 2rem;
+  grid-template-columns: 1fr minmax(300px, 450px);
+
+  &-success {
+    grid-template-columns: 1fr;
+  }
 }
 

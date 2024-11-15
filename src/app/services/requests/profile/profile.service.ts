@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ILoginForm, IToken, IUser } from './profile.typings';
 import { Observable, tap } from 'rxjs';
@@ -10,11 +10,11 @@ import { StripeService } from '../stripe.service';
 })
 export class ProfileService {
   user = signal<IUser | null>(null);
-  stripeService = inject(StripeService);
 
   constructor(
     private http: HttpClient,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private stripeService: StripeService
   ) {
   }
 

@@ -1,7 +1,7 @@
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { from, Observable, tap } from 'rxjs';
-import { loadStripe, PaymentIntent, PaymentMethod, Stripe } from '@stripe/stripe-js';
+import { loadStripe, PaymentIntent, PaymentMethod, Stripe, StripeCardNumberElement } from '@stripe/stripe-js';
 
 export interface StripeCustomer {
   id: string;
@@ -18,9 +18,11 @@ export class StripeService {
   cards = signal<PaymentMethod[]>([]);
   customer = signal<StripeCustomer | null>(null);
   stripe = signal<Stripe | null>(null);
-  pi_secret = signal<string | null>(null);
+  cardNumberElement: StripeCardNumberElement | null = null;
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+  ) {
     this.initStripe();
   }
 
@@ -38,7 +40,14 @@ export class StripeService {
     return this.http.post<PaymentIntent>('/stripe-checkout', data);
   }
 
-  createPaymentMethod(data: { paymentMethodId?: string, stripeId?: string }): Observable<any> {
+  createPaymentMethod(): Observable<any> {
+    return from(this.stripe()!.createPaymentMethod({
+      type: 'card',
+      card: this.cardNumberElement!,
+    }))
+  }
+
+  createCustomerPaymentMethod(data: { paymentMethodId?: string, stripeId?: string }): Observable<any> {
     return this.http.post('/stripe-payment-method', data);
   }
 

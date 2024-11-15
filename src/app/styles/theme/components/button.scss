@@ -113,92 +113,126 @@ $colors: (
         )
       ),
     ),
-    outlined: (
-      primary: (
-        default: (
-          bgc: color(white),
-          bc: color(primary-500),
-          color: color(primary-500),
-        ),
-        hover: (
-          bgc: color(primary-600, 0.1),
-          bc: color(primary-600),
-          color: color(primary-600)
-        ),
-        disabled: (
-          bgc: color(white),
-          bc: color(primary-200),
-          color: color(primary-200)
-        )
+    warning: (
+      default: (
+        bgc: color(warning-500),
+        bc: color(warning-500),
+        color: color(white),
       ),
-      secondary: (
-        default: (
-          bgc: color(white),
-          bc: color(secondary-500),
-          color: color(secondary-500),
-        ),
-        hover: (
-          bgc: color(secondary-600, 0.1),
-          bc: color(secondary-600),
-          color: color(secondary-600)
-        ),
-        disabled: (
-          bgc: color(white),
-          bc: color(secondary-200),
-          color: color(secondary-200)
-        )
+      hover: (
+        bgc: color(warning-600),
+        bc: color(warning-600),
+        color: color(white)
       ),
-      success: (
-        default: (
-          bgc: color(white),
-          bc: color(success-500),
-          color: color(success-500),
-        ),
-        hover: (
-          bgc: color(success-600, 0.1),
-          bc: color(success-600),
-          color: color(success-600)
-        ),
-        disabled: (
-          bgc: color(white),
-          bc: color(success-200),
-          color: color(success-200)
-        )
+      disabled: (
+        bgc: color(warning-200),
+        bc: color(warning-200),
+        color: color(white)
+      )
+    ),
+    danger: (
+      default: (
+        bgc: color(danger-500),
+        bc: color(danger-500),
+        color: color(white),
       ),
-      warning: (
-        default: (
-          bgc: color(white),
-          bc: color(warning-500),
-          color: color(warning-500),
-        ),
-        hover: (
-          bgc: color(warning-600, 0.1),
-          bc: color(warning-600),
-          color: color(warning-600)
-        ),
-        disabled: (
-          bgc: color(white),
-          bc: color(warning-200),
-          color: color(warning-200)
-        )
+      hover: (
+        bgc: color(danger-600),
+        bc: color(danger-600),
+        color: color(white)
       ),
-      danger: (
-        default: (
-          bgc: color(white),
-          bc: color(danger-500),
-          color: color(danger-500),
-        ),
-        hover: (
-          bgc: color(danger-600, 0.1),
-          bc: color(danger-600),
-          color: color(danger-600)
-        ),
-        disabled: (
-          bgc: color(white),
-          bc: color(danger-200),
-          color: color(danger-200)
-        )
+      disabled: (
+        bgc: color(danger-200),
+        bc: color(danger-200),
+        color: color(white)
+      )
+    ),
+  ),
+  outlined: (
+    primary: (
+      default: (
+        bgc: color(white),
+        bc: color(primary-500),
+        color: color(primary-500),
       ),
-    )
+      hover: (
+        bgc: color(primary-600, 0.1),
+        bc: color(primary-600),
+        color: color(primary-600)
+      ),
+      disabled: (
+        bgc: color(white),
+        bc: color(primary-200),
+        color: color(primary-200)
+      )
+    ),
+    secondary: (
+      default: (
+        bgc: color(white),
+        bc: color(secondary-500),
+        color: color(secondary-500),
+      ),
+      hover: (
+        bgc: color(secondary-600, 0.1),
+        bc: color(secondary-600),
+        color: color(secondary-600)
+      ),
+      disabled: (
+        bgc: color(white),
+        bc: color(secondary-200),
+        color: color(secondary-200)
+      )
+    ),
+    success: (
+      default: (
+        bgc: color(white),
+        bc: color(success-500),
+        color: color(success-500),
+      ),
+      hover: (
+        bgc: color(success-600, 0.1),
+        bc: color(success-600),
+        color: color(success-600)
+      ),
+      disabled: (
+        bgc: color(white),
+        bc: color(success-200),
+        color: color(success-200)
+      )
+    ),
+    warning: (
+      default: (
+        bgc: color(white),
+        bc: color(warning-500),
+        color: color(warning-500),
+      ),
+      hover: (
+        bgc: color(warning-600, 0.1),
+        bc: color(warning-600),
+        color: color(warning-600)
+      ),
+      disabled: (
+        bgc: color(white),
+        bc: color(warning-200),
+        color: color(warning-200)
+      )
+    ),
+    danger: (
+      default: (
+        bgc: color(white),
+        bc: color(danger-500),
+        color: color(danger-500),
+      ),
+      hover: (
+        bgc: color(danger-600, 0.1),
+        bc: color(danger-600),
+        color: color(danger-600)
+      ),
+      disabled: (
+        bgc: color(white),
+        bc: color(danger-200),
+        color: color(danger-200)
+      )
+    ),
   )
 );

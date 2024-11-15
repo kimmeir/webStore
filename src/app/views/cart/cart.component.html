@@ -1,4 +1,7 @@
-<div class="cart container">
+<div
+  class="cart container"
+  [class.cart-success]="router.url === '/cart/success'"
+>
   <div class="cart-wrapper">
     <router-outlet></router-outlet>
   </div>

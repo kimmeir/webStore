@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { selectCartItems } from '../../../../state/cart/cart.selectors';
 import { ProfileService } from '../../../../services/requests/profile/profile.service';
 import { cartActions } from '../../../../state/cart/cart.actions';
+import { MatRadioButton, MatRadioGroup } from '@angular/material/radio';
 
 @Component({
   selector: 'app-cart-items',
@@ -15,7 +16,9 @@ import { cartActions } from '../../../../state/cart/cart.actions';
     AsyncPipe,
     CartItemComponent,
     InfoBlockComponent,
-    NgIf
+    NgIf,
+    MatRadioButton,
+    MatRadioGroup
   ],
   templateUrl: './cart-items.component.html',
   styleUrl: './cart-items.component.scss'

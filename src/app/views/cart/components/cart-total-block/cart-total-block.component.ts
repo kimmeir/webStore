@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, Signal } from '@angular/core';
+import { Component, computed, inject, signal, Signal } from '@angular/core';
 import { AsyncPipe, CurrencyPipe } from '@angular/common';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { InfoBlockComponent } from '../../../../shared/components/info-block/info-block.component';
@@ -10,8 +10,10 @@ import { ProfileService } from '../../../../services/requests/profile/profile.se
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from '../../../../layouts/header/components/auth-dialog/auth-dialog.component';
 import { StripeService } from '../../../../services/requests/stripe.service';
-import { from } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { IOrderPayload, OrderService } from '../../../../services/requests/order.service';
+import { of, switchMap, tap } from 'rxjs';
+import { cartTriggerAction } from '../../../../state/cart/cart.actions';
 
 @Component({
   selector: 'app-cart-total-block',
@@ -34,18 +36,30 @@ export class CartTotalBlockComponent {
   private dialogRef = inject(MatDialog);
   private stripeService = inject(StripeService);
   private snackBar = inject(MatSnackBar);
+  private orderService = inject(OrderService);
 
-  stripe = this.stripeService.stripe;
+  private stripe = this.stripeService.stripe;
+  private paymentMethod = this.orderService.paymentMethod;
+  private paymentMethodId = signal<string>('');
+  stripeAmount: number = 0;
 
   cartTotalPrice$ = this.store.select(selectCartTotalPrice);
   cart$ = this.store.select(selectCartItems);
-  pi_secret = this.stripeService.pi_secret;
+
 
   constructor() {
-    effect(() => {
-      this.pi_secret = this.stripeService.pi_secret;
-    });
+    this.store.select(selectCartTotalPrice)
+      .subscribe(amount => {
+        this.stripeAmount = Math.round(amount * 100);
+      });
   }
+
+  order = computed<IOrderPayload>(() => ({
+    paymentMethod: this.paymentMethod(),
+    paymentMethodId: this.paymentMethodId(),
+    amount: this.stripeAmount,
+    currency: 'usd',
+  }));
 
   totalButtons: Signal<Record<string, {
     text: string,
@@ -60,8 +74,21 @@ export class CartTotalBlockComponent {
     '/cart/checkout': {
       text: 'Place order',
       onClick: () => this.onPlaceOrder(),
-      isDisabled: this.pi_secret(),
+      isDisabled: true,
     }
+  }));
+
+  orderMethod = computed(() => ({
+    default: () => this.orderService.createOrder(this.order()),
+    new: () =>
+      this.stripe() && this.stripeService.cardNumberElement
+        ? this.stripeService.createPaymentMethod()
+          .pipe(
+            switchMap(() => this.stripeService.createPaymentMethod()),
+            tap((pm) => this.paymentMethodId.set(pm.paymentMethod?.id as string)),
+            tap(() => this.orderService.createOrder(this.order()))
+          )
+        : of(this.snackBar.open('Problem to init checkout', 'Close', { duration: 5000 }))
   }));
 
   onProceedToCheckout() {
@@ -73,16 +100,13 @@ export class CartTotalBlockComponent {
   }
 
   onPlaceOrder() {
-    if (this.stripe && this.pi_secret())
-      from(this.stripe()!.confirmCardPayment(this.pi_secret()!))
-        .subscribe(result => {
-          if (result.error?.message) {
-            this.snackBar.open(result.error.message, 'Close');
-          } else if (result?.paymentIntent?.status === 'succeeded') {
-            this.snackBar.open('Payment succeeded', 'Close');
-            this.router.navigate(['cart', 'success']);
-          }
-        });
+    this.orderMethod()[this.paymentMethod()]()
+      .pipe(
+        tap(() => this.snackBar.open('Order placed', 'Close', { duration: 5000 })),
+        tap(() => this.router.navigate(['cart', 'success'])),
+        tap(() => this.store.dispatch(cartTriggerAction()))
+      )
+      .subscribe()
   }
 
   // TODO: add list of products for checkout??

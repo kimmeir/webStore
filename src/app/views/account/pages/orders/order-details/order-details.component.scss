@@ -1,0 +1,20 @@
+@import "variables";
+
+.order {
+  &-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem;
+    border: 1px solid $warning-200;
+    background-color: $warning-50;
+
+    &-left {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-total {
+      color: $secondary-500;
+    }
+  }
+}
