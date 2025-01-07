@@ -38,10 +38,14 @@ export const routes: Routes = [
         loadComponent: () => import('./views/cart/pages/checkout/checkout.component').then(m => m.CheckoutComponent),
       },
       {
-        path: 'success',
+        path: 'order-success/:id',
         loadComponent: () => import('./views/cart/pages/checkout-success/checkout-success.component').then(m => m.CheckoutSuccessComponent),
       }
     ]
+  },
+  {
+    path: 'wishes',
+    loadComponent: () => import('./views/wishes/wishes.component').then(m => m.WishesComponent),
   },
   {
     path: 'account',

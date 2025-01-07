@@ -19,7 +19,10 @@
         <mat-icon>dashboard</mat-icon>
         <span>Go to Dashboard</span>
       </app-button>
-      <app-button [disabled]="true">
+      <app-button
+        [routerLink]="['/account','orders', orderId]"
+        variant="contained"
+      >
         <span>View Order</span>
         <mat-icon>arrow_forward</mat-icon>
       </app-button>

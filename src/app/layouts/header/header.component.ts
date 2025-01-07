@@ -68,6 +68,12 @@ export class HeaderComponent {
     this.router.navigate(['/cart']);
   }
 
+  onWishesClick() {
+    this.profileService.isAuthorized()
+      ? this.router.navigate(['/wishes'])
+      : this.openDialog();
+  }
+
   onAccountClick() {
     this.profileService.isAuthorized()
       ? this.router.navigate(['/account'])

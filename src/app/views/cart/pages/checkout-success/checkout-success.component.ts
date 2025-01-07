@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { MatIcon } from '@angular/material/icon';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-checkout-success',
@@ -15,5 +15,12 @@ import { RouterLink } from '@angular/router';
   styleUrl: './checkout-success.component.scss'
 })
 export class CheckoutSuccessComponent {
+  private currentRoute = inject(ActivatedRoute);
+  public orderId = this.currentRoute.snapshot.paramMap.get('id');
+
+  constructor() {
+    console.log('CheckoutSuccessComponent', this.currentRoute.snapshot.paramMap.get('id'));
+  }
+
   // TODO: finish success design
 }

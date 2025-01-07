@@ -18,11 +18,12 @@
   </a>
   <span class="product-price">{{ item.product.price | currency }}</span>
   <input
-    [(ngModel)]="item.quantity"
     min="1"
     max="10"
     class="product-quantity"
     type="number"
+    [value]="item.quantity"
+    (change)="updateQuantity($event)"
   >
   <span class="product-price">{{ item.product.price * item.quantity | currency }}</span>
 </div>

@@ -13,6 +13,7 @@
           <app-cart-item
             [item]="item"
             (onRemoveFromCart)="onRemoveFromCart($event)"
+            (onChangeQuantity)="onChangeQuantity($event)"
           />
         }
       } @else {

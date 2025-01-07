@@ -24,11 +24,17 @@ import { FormsModule } from '@angular/forms';
 export class CartItemComponent {
   @Input() item!: ICartItem;
   @Output() onRemoveFromCart = new EventEmitter<number>();
+  @Output() onChangeQuantity = new EventEmitter<{ id: number | undefined, quantity: number }>();
 
   removeItem(event: Event) {
     event.stopPropagation();
     this.onRemoveFromCart.emit(this.item.id);
   }
 
-  // TODO: add possibility to change quantity of product by input change event or add button that will update cart
+  updateQuantity(event: Event) {
+    event.stopPropagation();
+    const target = event.target as HTMLInputElement;
+    this.onChangeQuantity.emit({ id: this.item.id, quantity: +target.value });
+    console.log('update quantity', target.value);
+  }
 }

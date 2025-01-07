@@ -4,6 +4,7 @@ import { MainComponent } from './layouts/main/main.component';
 import { ProfileService } from './services/requests/profile/profile.service';
 import { Store } from '@ngrx/store';
 import { cartTriggerAction } from './state/cart/cart.actions';
+import { wishesTrigger } from './state/wishes/wishes.actions';
 
 @Component({
   selector: 'app-root',
@@ -20,7 +21,9 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.profileService.isAuthorized())
+    if (this.profileService.isAuthorized()) {
       this.store.dispatch(cartTriggerAction());
+      this.store.dispatch(wishesTrigger());
+    }
   }
 }

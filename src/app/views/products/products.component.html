@@ -1,12 +1,14 @@
 @defer {
   @if (products().length !== 0) {
     <div class="products">
-
       @for (product of products(); track product.id) {
         <app-product-card
           [product]="product"
+          [isWished]="isWished(product.id)"
           (click)="onProductClick(product.id)"
           (onAddToCart)="onAddToCart($event)"
+          (onAddWish)="onAddToWishlist($event)"
+          (onRemoveWish)="onRemoveFromWishlist($event)"
         />
       }
     </div>

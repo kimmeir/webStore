@@ -1,0 +1,53 @@
+@import "variables";
+
+.list {
+  margin: 0 -1.5rem;
+
+  &-header {
+    height: 50px;
+    align-items: center;
+    justify-items: start;
+    text-transform: uppercase;
+    background-color: color(gray-50);
+    border: 1px solid color(gray-100);
+    border-left: none;
+    border-right: none;
+    padding: 0 1.5rem;
+  }
+
+  &-item {
+    padding: 1.5rem 0;
+    margin: 0 1.5rem;
+    align-items: center;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid color(gray-100);
+    }
+
+    &-product {
+      display: flex;
+      gap: 1.5rem;
+
+      img {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+
+      .title {
+        color: color(secondary-500);
+        text-transform: uppercase;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &-header,
+  &-item {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    gap: 2rem;
+
+  }
+}

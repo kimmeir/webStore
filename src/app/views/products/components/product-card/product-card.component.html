@@ -1,5 +1,4 @@
 <div class="product-card">
-
   <div class="product-card-wrapper">
     <img
       class="product-card-image"
@@ -7,7 +6,10 @@
       alt="{{ product.title }}"
     />
     <div class="product-card-actions">
-      <app-icon-btn>
+      <app-icon-btn
+        (click)="onClickWish($event)"
+        [class.active]="isWished"
+      >
         <mat-icon>favorite</mat-icon>
       </app-icon-btn>
       <app-icon-btn

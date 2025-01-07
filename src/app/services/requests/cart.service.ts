@@ -31,8 +31,11 @@ export class CartService {
   }
 
   removeFromCart(cartItemId: string | number): Observable<ICartItem[]> {
-    console.log('Remove from cart:', cartItemId)
     return this.http.delete<ICartItem[]>('/cart/remove-from-cart', { params: { id: cartItemId } });
+  }
+
+  changeQuantity(cartItemId: string | number, quantity: number): Observable<ICartItem[]> {
+    return this.http.post<ICartItem[]>('/cart/change-quantity', { id: cartItemId, quantity });
   }
 
   bulkAddToCart(products: IProductAddToCart[]): Observable<any> {

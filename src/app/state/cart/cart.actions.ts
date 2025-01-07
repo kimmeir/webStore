@@ -8,6 +8,7 @@ export const cartActions = createActionGroup({
     addTrigger: (product: ICartItem) => ({ product }),
     remove: (cartItemId: string | number) => ({ cartItemId }),
     removeTrigger: (cartItemId: string | number) => ({ cartItemId }),
+    changeQuantity: (cartItemId: string | number, quantity: number) => ({ cartItemId, quantity }),
     loadCartOnLogin: (cartItems: ICartItem[]) => ({ cartItems }),
     loadToCart: (cartItems: ICartItem[]) => ({ cartItems }),
   },
