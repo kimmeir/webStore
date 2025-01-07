@@ -10,6 +10,7 @@ import { errorHandlerInterceptor } from './services/interceptors/error-handler.i
 import { provideEffects } from '@ngrx/effects';
 import * as profileEffect from './state/profile/profile.effects';
 import * as cartEffect from './state/cart/cart.effects';
+import * as wishesEffect from './state/wishes/wishes.effects';
 import { appState } from './state/app.state';
 // import { provideApollo } from 'apollo-angular';
 // import { createHttpLink, InMemoryCache } from '@apollo/client/core';
@@ -21,6 +22,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptors([baseUrlInterceptor, errorHandlerInterceptor, jwtInterceptor, loaderInterceptor])),
     provideStore(appState),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
-    provideEffects(profileEffect, cartEffect),
+    provideEffects(profileEffect, cartEffect, wishesEffect),
   ],
 };

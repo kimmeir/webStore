@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import { cartActions, cartClear } from '../cart/cart.actions';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { wishesClear, wishesTrigger } from '../wishes/wishes.actions';
 
 export const loginEffect = createEffect(
   (
@@ -25,6 +26,7 @@ export const loginEffect = createEffect(
         .pipe(
           tap((token) => tokenService.setToken(token.access_token)),
           tap(() => dialog.closeAll()),
+          tap(() => store.dispatch(wishesTrigger())),
           switchMap(() => cartService.getCart()),
           tap((cartItems) => {
             cartService.cartItems.set(cartItems)
@@ -45,6 +47,7 @@ export const logoutEffect = createEffect((
     ofType(profileLogout),
     tap(() => {
       store.dispatch(cartClear());
+      store.dispatch(wishesClear());
       tokenService.removeToken()
       router.navigate(['/']);
     })

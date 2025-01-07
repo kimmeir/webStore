@@ -1,17 +1,19 @@
 <app-info-block>
   <ng-container title>Order Details</ng-container>
-  <div class="order-details">
-    <div class="order-details-left">
-      <span class="text-body-xl-400">#{{ order.id }}</span>
-      <span class="text-body-s-400">
+  <div class="order">
+    <div class="order-details">
+      <div class="order-details-left">
+        <span class="text-body-xl-400">#{{ order.id }}</span>
+        <span class="text-body-s-400">
         Products {{ orderItems.length }}
-        •
+          •
         Order Placed in {{ order.createdAt | date: 'medium' }}
       </span>
+      </div>
+      <div class="order-details-right">
+        <h2 class="text-heading-2 order-details-total">{{ order.total | currency }}</h2>
+      </div>
     </div>
-    <div class="order-details-right">
-      <h2 class="text-heading-2 order-details-total">{{ order.total | currency }}</h2>
-    </div>
+    <app-order-items [orderItems]="orderItems"/>
   </div>
-  <pre> {{ orderItems | json }}</pre>
 </app-info-block>

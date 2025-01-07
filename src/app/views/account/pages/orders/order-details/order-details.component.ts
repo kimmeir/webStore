@@ -3,6 +3,7 @@ import { InfoBlockComponent } from '../../../../../shared/components/info-block/
 import { IOrder, IOrderItem, OrderService } from '../../../../../services/requests/order.service';
 import { ActivatedRoute } from '@angular/router';
 import { AsyncPipe, CurrencyPipe, DatePipe, JsonPipe, NgIf } from '@angular/common';
+import { OrderItemsComponent } from './components/order-items/order-items.component';
 
 @Component({
   selector: 'app-order-details',
@@ -13,7 +14,8 @@ import { AsyncPipe, CurrencyPipe, DatePipe, JsonPipe, NgIf } from '@angular/comm
     NgIf,
     JsonPipe,
     CurrencyPipe,
-    DatePipe
+    DatePipe,
+    OrderItemsComponent
   ],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.scss'

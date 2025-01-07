@@ -102,8 +102,8 @@ export class CartTotalBlockComponent {
   onPlaceOrder() {
     this.orderMethod()[this.paymentMethod()]()
       .pipe(
+        tap((orderResult) => this.router.navigate(['cart', 'order-success', orderResult.order.id])),
         tap(() => this.snackBar.open('Order placed', 'Close', { duration: 5000 })),
-        tap(() => this.router.navigate(['cart', 'success'])),
         tap(() => this.store.dispatch(cartTriggerAction()))
       )
       .subscribe()

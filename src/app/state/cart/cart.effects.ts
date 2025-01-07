@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { exhaustMap, first, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { debounceTime, exhaustMap, first, of, switchMap, tap, withLatestFrom } from 'rxjs';
 import { CartService, ICartItem } from '../../services/requests/cart.service';
 import { cartActions, cartTriggerAction } from './cart.actions';
 import { Store } from '@ngrx/store';
@@ -69,6 +69,24 @@ export const cartRemoveEffect = createEffect((
         .pipe(first())
         .subscribe((cartItems) => store.dispatch(cartActions.loadToCart(cartItems as ICartItem[])))
       : store.dispatch(cartActions.remove(cartRemoveAction.cartItemId))
+    ),
+  ),
+  { functional: true, dispatch: false }
+)
+
+export const cartChangeQuantityEffect = createEffect((
+    actions$ = inject(Actions),
+    cartService = inject(CartService),
+    store = inject(Store),
+    profileService = inject(ProfileService)
+  ) => actions$.pipe(
+    ofType(cartActions.changeQuantity),
+    debounceTime(1000),
+    tap((cartChangeAction) => profileService.isAuthorized()
+      ? cartService.changeQuantity(cartChangeAction.cartItemId, cartChangeAction.quantity)
+        .pipe(first())
+        .subscribe((cartItems) => store.dispatch(cartActions.loadToCart(cartItems as ICartItem[])))
+      : store.dispatch(cartActions.changeQuantity(cartChangeAction.cartItemId, cartChangeAction.quantity))
     ),
   ),
   { functional: true, dispatch: false }

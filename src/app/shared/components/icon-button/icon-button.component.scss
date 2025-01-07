@@ -1,5 +1,12 @@
 @import 'variables';
 
+:host-context(.active) {
+  .icon-button {
+    background-color: color(primary-500);
+    color: color(white);
+  }
+}
+
 .icon-button {
   display: flex;
   justify-content: center;
