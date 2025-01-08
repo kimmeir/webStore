@@ -1,0 +1,19 @@
+@import "variables";
+
+footer {
+  background-color: color(gray-900);
+
+  .copy-right {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid color(gray-500);
+    color: color(gray-300);
+
+    a {
+      color: color(primary-500);
+      text-decoration: none;
+    }
+  }
+}

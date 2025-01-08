@@ -1,7 +1,7 @@
 @import "variables";
 
 .header {
-  background-color: color(primary-700);
+  background-color: color(secondary-700);
 
   &-wrapper {
     display: grid;
@@ -34,6 +34,33 @@
 
     button {
       color: color(white);
+    }
+
+    .account {
+      &:before {
+        content: "";
+        border: 2px solid transparent;
+        border-radius: 50%;
+        position: absolute;
+        width: 21px;
+        height: 21px;
+        top: 7.7px;
+        left: 7.7px;
+        transition: border-color ease-in-out 0.5s, box-shadow ease-in-out 0.5s;
+      }
+
+      &-active {
+        &:before {
+          border: 2px solid color(primary-500);
+          box-shadow: 0 0 9px 1px color(primary-500);
+        }
+
+        &:hover:before {
+          box-shadow: 0 0 9px 4px color(primary-500);
+        }
+
+      }
+
     }
   }
 }

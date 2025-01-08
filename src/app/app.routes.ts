@@ -74,5 +74,9 @@ export const routes: Routes = [
         loadComponent: () => import('./views/account/pages/settings/settings.component').then(m => m.SettingsComponent),
       }
     ]
+  },
+  {
+    path: '**',
+    loadComponent: () => import('./views/404/404.component').then(m => m.NotFoundComponent),
   }
 ];

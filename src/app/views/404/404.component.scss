@@ -1,0 +1,26 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  img {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 500px;
+    text-align: center;
+
+    .actions {
+      display: flex;
+      gap: 1.5rem;
+    }
+  }
+}
