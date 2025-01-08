@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { from, Observable, tap } from 'rxjs';
 import { loadStripe, PaymentIntent, PaymentMethod, Stripe, StripeCardNumberElement } from '@stripe/stripe-js';
+import { IUser } from './profile/profile.typings';
 
 export interface StripeCustomer {
   id: string;
@@ -36,6 +37,10 @@ export class StripeService {
       .subscribe((customer) => this.customer.set(customer));
   }
 
+  createCustomer(): Observable<IUser> {
+    return this.http.post<IUser>('/stripe-customer', {});
+  }
+
   createPaymentIntent(data: { amount: number, currency: string }): Observable<PaymentIntent> {
     return this.http.post<PaymentIntent>('/stripe-checkout', data);
   }
@@ -51,8 +56,8 @@ export class StripeService {
     return this.http.post('/stripe-payment-method', data);
   }
 
-  getPaymentMethods(stripeId: string): void {
-    this.http.get<PaymentMethod[]>('/stripe-payment-method', { params: { stripeId } })
+  getPaymentMethods(): void {
+    this.http.get<PaymentMethod[]>('/stripe-payment-method')
       .subscribe(cards => this.cards.set(cards));
   }
 

@@ -13,7 +13,7 @@ export const errorHandlerInterceptor: HttpInterceptorFn = (req, next) => {
     .pipe(
       catchError((error) => {
         if (error.status === 401) store.dispatch(profileLogout());
-        if (error.error.message) _snackBar.open(error.error.message)
+        if (error?.error?.message) _snackBar.open(error.error.message)
 
         return throwError(error);
       })

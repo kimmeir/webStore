@@ -12,7 +12,7 @@
         </ng-container>
       </button>
     </ng-container>
-    @if (cards().length) {
+    @if (cards()) {
       <div class="cards">
         @for (card of cards(); track card.id) {
           <app-bank-card
@@ -26,4 +26,3 @@
     }
   </app-info-block>
 </div>
-

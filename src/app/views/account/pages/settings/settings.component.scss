@@ -1,20 +1,36 @@
 @import "variables";
 
-.profile-info {
-  display: grid;
-  grid-template-columns: 176px 1fr;
-  gap: 1.5rem;
+.profile {
+  &-setting {
+    &-info {
+      display: grid;
+      grid-template-columns: 176px 1fr;
+      gap: 1.5rem;
 
-  .avatar {
-    width: 176px;
-    height: 176px;
-    border-radius: 50%;
-    object-fit: cover;
+      .avatar {
+        width: 176px;
+        height: 176px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .inputs {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr;
+      }
+    }
   }
 
-  .inputs {
+  &-address {
     display: grid;
-    gap: 1rem;
     grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+
+    //.inputs {
+    //  display: grid;
+    //  gap: 1rem;
+    //  grid-template-columns: 1fr 1fr;
+    //}
   }
 }

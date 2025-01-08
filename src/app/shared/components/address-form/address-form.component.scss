@@ -1,0 +1,10 @@
+.address-form {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1.5rem;
+
+  .full {
+    grid-column: 1 / -1;
+  }
+}

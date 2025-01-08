@@ -1,53 +1,72 @@
-<app-info-block>
-  <ng-container title>account settings</ng-container>
-  <div class="profile-info">
-    <div class="avatar">
-      <img
-        ngSrc="/avatar-placeholder.svg"
-        alt="avatar"
-        height="176" width="176"/>
-    </div>
-    <form
-      [formGroup]="form"
-      (ngSubmit)="onSubmit()"
-    >
-      <div class="inputs">
-        <mat-form-field>
-          <mat-label>First Name</mat-label>
-          <input
-            matInput
-            placeholder="First Name"
-            type="text"
-            formControlName="first_name"
-          />
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Last Name</mat-label>
-          <input
-            matInput
-            placeholder="Last Name"
-            type="text"
-            formControlName="last_name"
-          />
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>Email</mat-label>
-          <input
-            matInput
-            placeholder="Email"
-            type="email"
-            formControlName="email"
-          />
-        </mat-form-field>
+<div class="profile-setting">
+  <app-info-block>
+    <ng-container title>account settings</ng-container>
+    <div class="profile-setting-info">
+      <div class="avatar">
+        <img
+          ngSrc="/avatar-placeholder.svg"
+          alt="avatar"
+          height="176" width="176"/>
       </div>
-      <app-button
-        type="submit"
-        [disabled]="form.invalid"
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
       >
-        Save
-      </app-button>
-    </form>
-  </div>
-</app-info-block>
+        <div class="inputs">
+          <mat-form-field>
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              placeholder="First Name"
+              type="text"
+              formControlName="first_name"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              placeholder="Last Name"
+              type="text"
+              formControlName="last_name"
+            />
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              placeholder="Email"
+              type="email"
+              formControlName="email"
+            />
+          </mat-form-field>
+        </div>
+        <app-button
+          type="submit"
+          [disabled]="form.invalid|| !form.dirty"
+        >
+          Save
+        </app-button>
+      </form>
+    </div>
+  </app-info-block>
+</div>
+<div class="profile-address">
+  <app-info-block>
+    <ng-container title>billing address</ng-container>
+    <app-address-form
+      [initialData]="user()?.billAddress"
+      (onSubmit)="onSubmitBillAddress($event)"
+    />
+  </app-info-block>
+  <app-info-block>
+    <ng-container title>shipping address</ng-container>
+    <app-address-form
+      [initialData]="user()?.shipAddress"
+      (onSubmit)="onSubmitShipAddress($event)"
+    />
+
+  </app-info-block>
+</div>

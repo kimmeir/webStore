@@ -11,7 +11,7 @@ import { ProfileService } from '../../services/requests/profile/profile.service'
 import { MatBadge } from '@angular/material/badge';
 import { Store } from '@ngrx/store';
 import { selectCartTotal } from '../../state/cart/cart.selectors';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { FormsModule } from '@angular/forms';
@@ -35,6 +35,7 @@ import { debounceTime, map, Subject } from 'rxjs';
     MatBadge,
     AsyncPipe,
     FormsModule,
+    JsonPipe,
   ],
   standalone: true
 })
@@ -51,7 +52,7 @@ export class HeaderComponent {
   searchObject = new Subject<string>();
 
   constructor(
-    private router: Router,
+    public router: Router,
     private productService: ProductsService,
   ) {
     this.searchObject
