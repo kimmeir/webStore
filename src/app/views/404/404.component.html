@@ -1,0 +1,21 @@
+<div class="container ">
+  <div class="not-found">
+    <img src="/404.svg" alt="404 image">
+    <div class="content">
+      <span class="text-display-5">404, Page not founds</span>
+      <span class="text-body-m-400">Something went wrong. It’s look that your requested could not be found. It’s look like the link is broken or
+        the page is removed.</span>
+      <div class="actions">
+        <app-button
+          (click)="goBack()"
+        >go back
+        </app-button>
+        <app-button
+          [routerLink]="['/']"
+          variant="outlined"
+        >go to home
+        </app-button>
+      </div>
+    </div>
+  </div>
+</div>

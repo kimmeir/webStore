@@ -1,52 +1,52 @@
-<app-info-block
-  [noPadding]="true"
->
-  <ng-container title>wishlist</ng-container>
-  <ng-container *ngIf="wishes$ | async as wishItems">
-    @if (wishItems.length !== 0) {
-      <div class="list">
-        <div class="list-header text-label-4">
-          <div>Product</div>
-          <div>Price</div>
-          <div>Actions</div>
-        </div>
-        <div class="list-body">
-          @for (item of wishItems; track item.id) {
-            <div class="list-item">
-              <div class="list-item-product">
-                @if (item.product.images?.[0]) {
-                  <img [src]="item.product.images?.[0]" [alt]="item.product.title"/>
-                } @else {
-                  <img src="/placeholder.png" [alt]="item.product.title"/>
-                }
-                <div>
-                  <p
-                    [routerLink]="['/products', item.product.id]"
-                    class="text-body-m-500 title"
-                  >{{ item.product.title }}</p>
-                  <p class="text-body-s-400">{{ item.product.description }}</p>
+<div class="container">
+  <app-info-block [noPadding]="true">
+    <ng-container title>wishlist</ng-container>
+    <ng-container *ngIf="wishes$ | async as wishItems">
+      @if (wishItems.length !== 0) {
+        <div class="list">
+          <div class="list-header text-label-4">
+            <div>Product</div>
+            <div>Price</div>
+            <div>Actions</div>
+          </div>
+          <div class="list-body">
+            @for (item of wishItems; track item.id) {
+              <div class="list-item">
+                <div class="list-item-product">
+                  @if (item.product.images?.[0]) {
+                    <img [src]="item.product.images?.[0]" [alt]="item.product.title"/>
+                  } @else {
+                    <img src="/placeholder.png" [alt]="item.product.title"/>
+                  }
+                  <div>
+                    <p
+                      [routerLink]="['/products', item.product.id]"
+                      class="text-body-m-500 title"
+                    >{{ item.product.title }}</p>
+                    <p class="text-body-s-400">{{ item.product.description }}</p>
+                  </div>
+                </div>
+                <span>{{ item.product.price | currency }}</span>
+                <div class="list-item-actions">
+                  <app-button
+                    color="primary"
+                    (click)="addToCart(item.product)"
+                  >Add to cart
+                  </app-button>
+                  <app-button
+                    color="danger"
+                    (click)="removeItem(item.product)"
+                  >remove
+                  </app-button>
                 </div>
               </div>
-              <span>{{ item.product.price | currency }}</span>
-              <div class="list-item-actions">
-                <app-button
-                  color="primary"
-                  (click)="addToCart(item.product)"
-                >Add to cart
-                </app-button>
-                <app-button
-                  color="danger"
-                  (click)="removeItem(item.product)"
-                >remove
-                </app-button>
-              </div>
-            </div>
-          }
+            }
+          </div>
         </div>
-      </div>
-    } @else {
-      <div class="empty text-heading-3">No items in wishlist</div>
-    }
-  </ng-container>
+      } @else {
+        <div class="no-items text-heading-3">No items in wishlist</div>
+      }
+    </ng-container>
 
-</app-info-block>
+  </app-info-block>
+</div>

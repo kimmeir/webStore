@@ -32,6 +32,8 @@
       <button
         mat-icon-button
         (click)="onAccountClick()"
+        class="account"
+        [class.account-active]="profileService.isAuthorized()"
       >
         <mat-icon>account_circle</mat-icon>
       </button>
