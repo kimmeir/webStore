@@ -9,9 +9,10 @@ export class UsersService {
 
   constructor(
     private http: HttpClient,
-  ) {}
+  ) {
+  }
 
-    getUsers() {
-      return this.http.get<IProduct[]>('/user')
+  getUsers() {
+    return this.http.get<IProduct[]>('/user')
   }
 }

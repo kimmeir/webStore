@@ -16,7 +16,7 @@ import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { LoadingComponent } from '../../../../../../shared/components/loading/loading.component';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatDialog } from '@angular/material/dialog';
-import { switchMap, tap } from 'rxjs';
+import { iif, of, switchMap, tap } from 'rxjs';
 import { NewCardFormComponent } from '../../../../../../shared/components/new-card-form/new-card-form.component';
 
 @Component({
@@ -53,17 +53,20 @@ export class NewCardDialogComponent {
 
   createCard() {
     if (!this.stripeService.cardNumberElement) return;
-    this.stripeService.createPaymentMethod()
-      .pipe(
-        switchMap((result) =>
-          this.stripeService.createCustomerPaymentMethod({
-            stripeId: this.user()?.stripeId,
-            paymentMethodId: result.paymentMethod?.id
-          })
-        ),
-        tap(() => this.stripeService.getPaymentMethods(this.user()!.stripeId as string)),
-        tap(() => this.close())
-      )
+    iif(
+      () => !!this.user()?.stripeId,
+      of(this.user()),
+      this.stripeService.createCustomer()
+    ).pipe(
+      tap((user) => this.user.set(user)),
+      switchMap(() => this.stripeService.createPaymentMethod()),
+      switchMap((result) => this.stripeService.createCustomerPaymentMethod({
+        stripeId: this.user()?.stripeId,
+        paymentMethodId: result.paymentMethod?.id
+      })),
+      tap(() => this.stripeService.getPaymentMethods()),
+      tap(() => this.close())
+    )
       .subscribe()
   }
 

@@ -7,11 +7,15 @@
       routerLink="/"
       class="app-title"
     >{{ title }}</span>
-    <input
-      type="search"
-      [(ngModel)]="searchTerm"
-      (ngModelChange)="onSearch($event)"
-    >
+    @if (router.url === '/products') {
+      <input
+        type="search"
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="onSearch($event)"
+      >
+    } @else {
+      <span></span>
+    }
     <div class="actions">
       <button
         mat-icon-button

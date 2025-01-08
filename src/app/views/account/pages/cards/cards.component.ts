@@ -38,10 +38,9 @@ export class CardsComponent {
   cards = this.stripeService.cards;
   customer = this.stripeService.customer;
 
-  ngOnInit() {
-    if (this.user()?.stripeId !== undefined) {
-      this.stripeService.getPaymentMethods(this.user()!.stripeId as string);
-    }
+
+  constructor() {
+    this.stripeService.getPaymentMethods()
   }
 
   addCard() {

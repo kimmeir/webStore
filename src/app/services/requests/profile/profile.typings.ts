@@ -5,16 +5,30 @@ export interface IToken {
 
 export interface IUser {
   id: number;
-  email: string;
-  password: string;
-  first_name: string;
-  last_name: string;
+  email: string | null;
+  password: string | null;
+  first_name: string | null;
+  last_name: string | null;
   role: string;
   avatar: string;
   stripeId?: string;
+  billAddress?: IAddress;
+  shipAddress?: IAddress;
 }
 
 export interface ILoginForm {
   email: string;
   password: string;
+}
+
+export interface IAddress {
+  country: string | null;
+  state: string | null;
+  city: string | null;
+  street: string | null;
+  zip: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  email: string | null;
+  phone: string | null;
 }

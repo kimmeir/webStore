@@ -5,6 +5,8 @@ import { Observable, tap } from 'rxjs';
 import { TokenService } from '../../token.service';
 import { StripeService } from '../stripe.service';
 
+export type addressType = 'bill' | 'ship';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -39,5 +41,13 @@ export class ProfileService {
 
   isAuthorized(): boolean {
     return Boolean(this.tokenService.getToken());
+  }
+
+  updateProfile(user: Partial<IUser>): Observable<IUser> {
+    return this.http.put<IUser>('/profile', user)
+  }
+
+  updateAddress(type: addressType, address: any) {
+    return this.http.put('/update-address', { type, ...address })
   }
 }
