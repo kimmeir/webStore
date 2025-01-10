@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as v;
 
 .product-card {
   $r: '.product-card';
@@ -7,12 +7,12 @@
   flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
-  border: 1px solid color(gray-100);
-  border-radius: $rounded;
+  border: 1px solid v.color(gray-100);
+  border-radius: v.$rounded;
   transition: box-shadow 0.3s;
 
   &:hover {
-    box-shadow: $shadow-1;
+    box-shadow: v.$shadow-1;
 
     #{$r}-actions {
       opacity: 1;
@@ -32,7 +32,7 @@
     justify-content: center;
     align-items: center;
     gap: 0.6rem;
-    background-color: color(black, .2);
+    background-color: v.color(black, .2);
     opacity: 0;
     position: absolute;
     width: 100%;
@@ -46,6 +46,6 @@
   }
 
   &-price {
-    color: color(secondary-500);
+    color: v.color(secondary-500);
   }
 }

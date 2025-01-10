@@ -4,14 +4,11 @@ import { MatIcon } from '@angular/material/icon';
 import { Router, RouterLink } from '@angular/router';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { LoadingService } from '../../services/loading/loading';
-import { MatToolbar } from '@angular/material/toolbar';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { MatFormField, MatOption, MatSelect } from '@angular/material/select';
 import { ProfileService } from '../../services/requests/profile/profile.service';
 import { MatBadge } from '@angular/material/badge';
 import { Store } from '@ngrx/store';
 import { selectCartTotal } from '../../state/cart/cart.selectors';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from './components/auth-dialog/auth-dialog.component';
 import { FormsModule } from '@angular/forms';
@@ -27,15 +24,9 @@ import { debounceTime, map, Subject } from 'rxjs';
     MatIcon,
     RouterLink,
     MatProgressBar,
-    MatToolbar,
-    NavigationComponent,
-    MatSelect,
-    MatFormField,
-    MatOption,
     MatBadge,
     AsyncPipe,
     FormsModule,
-    JsonPipe,
   ],
   standalone: true
 })

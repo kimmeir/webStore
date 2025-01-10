@@ -9,7 +9,9 @@
     >{{ title }}</span>
     @if (router.url === '/products') {
       <input
+        nz-input
         type="search"
+        pSize="small"
         [(ngModel)]="searchTerm"
         (ngModelChange)="onSearch($event)"
       >

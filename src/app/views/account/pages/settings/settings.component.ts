@@ -5,8 +5,10 @@ import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { ProfileService } from '../../../../services/requests/profile/profile.service';
-import { AsyncPipe, JsonPipe, NgIf, NgOptimizedImage } from '@angular/common';
+import { NgOptimizedImage } from '@angular/common';
 import { AddressFormComponent } from '../../../../shared/components/address-form/address-form.component';
+import { tap } from 'rxjs';
+import { IUser } from '../../../../services/requests/profile/profile.typings';
 
 @Component({
   selector: 'app-settings',
@@ -20,9 +22,6 @@ import { AddressFormComponent } from '../../../../shared/components/address-form
     ButtonComponent,
     NgOptimizedImage,
     AddressFormComponent,
-    JsonPipe,
-    AsyncPipe,
-    NgIf,
   ],
   templateUrl: './settings.component.html',
   styleUrl: './settings.component.scss'
@@ -52,11 +51,17 @@ export class SettingsComponent {
 
   onSubmitBillAddress(value: any) {
     this.profileService.updateAddress('bill', value)
+      .pipe(
+        tap((user: IUser) => this.profileService.user.set(user))
+      )
       .subscribe();
   }
 
   onSubmitShipAddress(value: any) {
     this.profileService.updateAddress('ship', value)
+      .pipe(
+        tap((user: IUser) => this.profileService.user.set(user))
+      )
       .subscribe();
   }
 }

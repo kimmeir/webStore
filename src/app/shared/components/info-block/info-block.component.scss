@@ -1,9 +1,9 @@
-@import "variables";
+@use "variables" as v;
 
 .info-block {
-  background: color(white);
-  border: 1px solid color(gray-100);
-  border-radius: $rounded-md;
+  background: v.color(white);
+  border: 1px solid v.color(gray-100);
+  border-radius: v.$rounded-md;
   margin-bottom: 2rem;
 
   &-header {
@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem 1.5rem;
-    border-bottom: 1px solid color(gray-100);
+    border-bottom: 1px solid v.color(gray-100);
 
     &-title {
       text-transform: uppercase;

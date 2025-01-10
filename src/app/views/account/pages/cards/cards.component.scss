@@ -1,5 +1,14 @@
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+.payment-methods {
+
+  &-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+
+  &-addresses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
 }

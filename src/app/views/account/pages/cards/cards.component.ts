@@ -1,29 +1,23 @@
 import { Component, inject } from '@angular/core';
 import { ProfileService } from '../../../../services/requests/profile/profile.service';
-import { ButtonComponent } from '../../../../shared/components/button/button.component';
 import { StripeService } from '../../../../services/requests/stripe.service';
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { BankCardComponent } from './components/bank-card/bank-card.component';
 import { InfoBlockComponent } from '../../../../shared/components/info-block/info-block.component';
-import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { BasicButtonComponent } from '../../../../shared/components/basic-button/basic-button.component';
 import { MatDialog } from '@angular/material/dialog';
 import { NewCardDialogComponent } from './components/new-card-dialog/new-card-dialog.component';
+import { AddressBlockComponent } from './components/address-block/address-block.component';
 
 @Component({
   selector: 'app-existing-stripe-cards',
   standalone: true,
   imports: [
-    ButtonComponent,
-    AsyncPipe,
-    JsonPipe,
-    NgIf,
     BankCardComponent,
     InfoBlockComponent,
-    MatButton,
     MatIcon,
-    BasicButtonComponent
+    BasicButtonComponent,
+    AddressBlockComponent,
   ],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss'

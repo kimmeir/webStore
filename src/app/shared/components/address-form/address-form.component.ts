@@ -4,7 +4,7 @@ import { MatInput } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../button/button.component';
 import { IAddress } from '../../../services/requests/profile/profile.typings';
-import { JsonPipe } from '@angular/common';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-address-form',
@@ -15,13 +15,14 @@ import { JsonPipe } from '@angular/common';
     MatLabel,
     ReactiveFormsModule,
     ButtonComponent,
-    JsonPipe
+    NgIf
   ],
   templateUrl: './address-form.component.html',
   styleUrl: './address-form.component.scss'
 })
 export class AddressFormComponent {
   @Input() initialData?: IAddress;
+  @Input() showButton: boolean = true;
   @Output() onSubmit = new EventEmitter<Partial<IAddress>>();
 
   public form = new FormGroup({
@@ -41,7 +42,9 @@ export class AddressFormComponent {
   }
 
   submit() {
-    if (this.form.valid)
+    if (this.form.valid) {
       this.onSubmit.emit(this.form.value);
+      this.form.markAsUntouched();
+    }
   }
 }

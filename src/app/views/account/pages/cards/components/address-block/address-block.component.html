@@ -1,0 +1,16 @@
+<app-info-block>
+  <ng-container title>{{ title }}</ng-container>
+  <div class="address-content">
+    <app-address-info
+      [address]="address"
+    />
+    <app-button
+      color="secondary"
+      variant="outlined"
+      routerLink="/account/settings"
+    >
+      {{ address ? 'edit address' : 'add address' }}
+      <mat-icon>arrow_forward</mat-icon>
+    </app-button>
+  </div>
+</app-info-block>

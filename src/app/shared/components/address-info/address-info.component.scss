@@ -1,0 +1,15 @@
+@use "../../../styles/variables" as v;
+
+.address-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  .heading {
+    color: v.color(gray-900);
+  }
+
+  span {
+    color: v.color(gray-600);
+  }
+}

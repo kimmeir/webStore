@@ -1,4 +1,4 @@
-@import "../../../../../../styles/variables";
+@use "variables" as v;
 
 .card {
   display: grid;
@@ -6,8 +6,8 @@
   align-content: space-between;
   width: 296px;
   height: 196px;
-  border-radius: $rounded-md;
-  color: color(white);
+  border-radius: v.$rounded-md;
+  color: v.color(white);
   padding: 1.5rem;
   box-sizing: border-box;
 

@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as v;
 
 .new-card {
   &-form {
@@ -11,8 +11,8 @@
     }
 
     .stripe-input {
-      border: 1px solid color(gray-100);
-      border-radius: $rounded-md;
+      border: 1px solid v.color(gray-100);
+      border-radius: v.$rounded-md;
       padding: 0.5rem 1rem;
     }
   }

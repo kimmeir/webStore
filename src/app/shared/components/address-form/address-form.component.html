@@ -3,7 +3,7 @@
   (ngSubmit)="submit()"
   class="address-form"
 >
-  <mat-form-field>
+  <mat-form-field class="first-name">
     <mat-label>First Name</mat-label>
     <input
       matInput
@@ -12,7 +12,7 @@
       formControlName="first_name"
     />
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="last-name">
     <mat-label>Last Name</mat-label>
     <input
       matInput
@@ -21,7 +21,7 @@
       formControlName="last_name"
     />
   </mat-form-field>
-  <mat-form-field class="full">
+  <mat-form-field class="full street">
     <mat-label>Street</mat-label>
     <input
       matInput
@@ -30,7 +30,7 @@
       formControlName="street"
     />
   </mat-form-field>
-  <mat-form-field class="full">
+  <mat-form-field class="full country">
     <mat-label>Country</mat-label>
     <input
       matInput
@@ -39,7 +39,7 @@
       formControlName="country"
     />
   </mat-form-field>
-  <mat-form-field class="full">
+  <mat-form-field class="full state">
     <mat-label>Region/State</mat-label>
     <input
       matInput
@@ -48,7 +48,7 @@
       formControlName="state"
     />
   </mat-form-field>
-  <mat-form-field>
+  <mat-form-field class="city">
     <mat-label>City</mat-label>
     <input
       matInput
@@ -57,8 +57,7 @@
       formControlName="city"
     />
   </mat-form-field>
-
-  <mat-form-field>
+  <mat-form-field class="zip">
     <mat-label>Zip</mat-label>
     <input
       matInput
@@ -67,7 +66,7 @@
       formControlName="zip"
     />
   </mat-form-field>
-  <mat-form-field class="full">
+  <mat-form-field class="full email">
     <mat-label>Email</mat-label>
     <input
       matInput
@@ -76,7 +75,7 @@
       formControlName="email"
     />
   </mat-form-field>
-  <mat-form-field class="full">
+  <mat-form-field class="full phone">
     <mat-label>Phone number</mat-label>
     <input
       matInput
@@ -86,8 +85,9 @@
     />
   </mat-form-field>
   <app-button
+    *ngIf="showButton"
     type="submit"
-    [disabled]="form.invalid || !form.dirty"
+    [disabled]="form.invalid || form.untouched"
   >
     Save changes
   </app-button>

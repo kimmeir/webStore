@@ -2,7 +2,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IProduct } from '../../../../services/requests/products';
 import { CurrencyPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatFabButton } from '@angular/material/button';
 import { IconButtonComponent } from '../../../../shared/components/icon-button/icon-button.component';
 
 @Component({
@@ -11,9 +10,7 @@ import { IconButtonComponent } from '../../../../shared/components/icon-button/i
   imports: [
     CurrencyPipe,
     MatIcon,
-    MatFabButton,
     IconButtonComponent,
-    MatButton,
   ],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.scss'

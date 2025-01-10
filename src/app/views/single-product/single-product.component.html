@@ -1,18 +1,6 @@
 <div class="product" *ngIf="product$ | async as product">
-  <div class="product-image" >
-    @if (product.images) {
-      <p-galleria
-        [value]="product.images"
-        [showIndicators]="true"
-        [showThumbnails]="false"
-      >
-        <ng-template pTemplate="item" let-item>
-          <img [src]="item" style="width: 100%; display: block;" priority/>
-        </ng-template>
-      </p-galleria>
-    } @else {
-      <img src="/placeholder.png" alt="Placeholder" />
-    }
+  <div class="product-image">
+    <img src="/placeholder.png" alt="Placeholder"/>
   </div>
   <div class="product-details">
     <h2>{{ product.title }}</h2>

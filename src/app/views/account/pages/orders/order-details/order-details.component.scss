@@ -1,16 +1,17 @@
-@import "variables";
+@use "variables" as v;
 
 .order {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
 
+
   &-details {
     display: flex;
     justify-content: space-between;
     padding: 2rem;
-    border: 1px solid $warning-200;
-    background-color: $warning-50;
+    border: 1px solid v.color(warning-200);
+    background-color: v.color(warning-50);
 
     &-left {
       display: flex;
@@ -18,7 +19,35 @@
     }
 
     &-total {
-      color: $secondary-500;
+      color: v.color(secondary-500);
+    }
+  }
+
+  &-footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    border-top: 1px solid v.color(gray-200);
+    margin: 0 -1.5rem;
+    padding: 1.5rem 0;
+
+    > * {
+      padding: 0 1.5rem;
+    }
+
+    > *:not(:last-child) {
+      border-right: 1px solid v.color(gray-200);
+    }
+
+    &-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      color: v.color(gray-600);
+
+      .heading {
+        color: v.color(gray-900);
+      }
     }
   }
 }

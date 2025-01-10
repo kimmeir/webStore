@@ -1,14 +1,14 @@
-@import "variables";
+@use "variables" as v;
 
 .header {
-  background-color: color(secondary-700);
+  background-color: v.color(secondary-700);
 
   &-wrapper {
     display: grid;
     align-items: center;
     justify-content: space-between;
     grid-template-columns: auto minmax(300px, 650px) auto;
-    color: color(white);
+    color: v.color(white);
     padding: 1rem 2rem;
     top: 0;
   }
@@ -33,7 +33,7 @@
     gap: 1rem;
 
     button {
-      color: color(white);
+      color: v.color(white);
     }
 
     .account {
@@ -51,12 +51,12 @@
 
       &-active {
         &:before {
-          border: 2px solid color(primary-500);
-          box-shadow: 0 0 9px 1px color(primary-500);
+          border: 2px solid v.color(primary-500);
+          box-shadow: 0 0 9px 1px v.color(primary-500);
         }
 
         &:hover:before {
-          box-shadow: 0 0 9px 4px color(primary-500);
+          box-shadow: 0 0 9px 4px v.color(primary-500);
         }
 
       }

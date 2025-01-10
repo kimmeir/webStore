@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as v;
 
 .product {
   display: grid;
@@ -9,11 +9,11 @@
   padding: 0 1.5rem;
 
   &-remove {
-    color: color(gray-400);
+    color: v.color(gray-400);
     transition: color 0.2s;
 
     &:hover {
-      color: color(danger-500);
+      color: v.color(danger-500);
     }
   }
 
@@ -24,7 +24,7 @@
   }
 
   &-title {
-    color: color(gray-900);
+    color: v.color(gray-900);
   }
 
   &-quantity {

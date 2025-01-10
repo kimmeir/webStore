@@ -1,6 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
 import { PaymentMethod } from '@stripe/stripe-js';
-import { IconButtonComponent } from '../../../../../../shared/components/icon-button/icon-button.component';
 import { MatIcon } from '@angular/material/icon';
 import { MatMenu, MatMenuItem, MatMenuTrigger } from '@angular/material/menu';
 import { StripeService } from '../../../../../../services/requests/stripe.service';
@@ -10,7 +9,6 @@ import { NgIf } from '@angular/common';
   selector: 'app-bank-card',
   standalone: true,
   imports: [
-    IconButtonComponent,
     MatIcon,
     MatMenu,
     MatMenuTrigger,

@@ -2,7 +2,6 @@ import { Component, inject } from '@angular/core';
 import { ButtonComponent } from '../../../../../../shared/components/button/button.component';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { PaginatorModule } from 'primeng/paginator';
 import { FormControl, FormGroup, ReactiveFormsModule, ValidatorFn, Validators } from '@angular/forms';
 import { ProfileService } from '../../../../../../services/requests/profile/profile.service';
 import { first } from 'rxjs';
@@ -17,7 +16,6 @@ import { MatDialog } from '@angular/material/dialog';
     MatFormField,
     MatInput,
     MatLabel,
-    PaginatorModule,
     ReactiveFormsModule
   ],
   templateUrl: './sign-up.component.html',

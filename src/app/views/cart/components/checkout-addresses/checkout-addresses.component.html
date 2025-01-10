@@ -1,0 +1,25 @@
+<app-info-block>
+  <ng-container title>Billing Information</ng-container>
+  <app-address-form
+    #billingForm
+    class="checkout-form"
+    [showButton]="false"
+    [initialData]="user()?.billAddress"
+  />
+</app-info-block>
+
+<mat-checkbox
+  [(ngModel)]="isShipDiffAsBill"
+  class="ship-diff-as-bill"
+>Ship into different address
+</mat-checkbox>
+
+<app-info-block *ngIf="isShipDiffAsBill()">
+  <ng-container title>shipping Information</ng-container>
+  <app-address-form
+    #shippingForm
+    class="checkout-form"
+    [showButton]="false"
+    [initialData]="user()?.shipAddress"
+  />
+</app-info-block>

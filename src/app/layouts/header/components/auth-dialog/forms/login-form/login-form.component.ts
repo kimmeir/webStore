@@ -4,7 +4,6 @@ import { Store } from '@ngrx/store';
 import { profileActions } from '../../../../../../state/profile/profile.actions';
 import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
-import { MatButton } from '@angular/material/button';
 import { ButtonComponent } from '../../../../../../shared/components/button/button.component';
 
 @Component({
@@ -15,7 +14,6 @@ import { ButtonComponent } from '../../../../../../shared/components/button/butt
     MatFormField,
     MatLabel,
     MatInput,
-    MatButton,
     ButtonComponent,
   ],
   templateUrl: './login-form.component.html',

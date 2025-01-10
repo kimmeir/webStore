@@ -1,0 +1,32 @@
+.checkout-form {
+  &::ng-deep {
+    form {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+
+      .street {
+        grid-column: 3 / 5 !important;
+      }
+
+      .country {
+        grid-column: 1 / 2 !important;
+      }
+
+      .state {
+        grid-column: 2 / 3 !important;
+      }
+
+      .email {
+        grid-column: 1 / 3 !important;
+      }
+
+      .phone {
+        grid-column: 3 / 5 !important;
+      }
+    }
+  }
+}
+
+.ship-diff-as-bill {
+  margin-bottom: 1.5rem;
+}

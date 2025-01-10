@@ -1,6 +1,6 @@
-@import "functions";
-@import "colors";
-@import "rounded";
-@import "sizes";
-@import "shadows";
-@import "global";
+@forward "functions";
+@forward "colors";
+@forward "rounded";
+@forward "sizes";
+@forward "shadows";
+@forward "global";
