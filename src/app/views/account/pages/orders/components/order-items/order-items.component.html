@@ -27,6 +27,8 @@
         <span>x{{ item.quantity }}</span>
         <span>{{ item.price * item.quantity | currency }}</span>
       </div>
+    } @empty {
+      <div class="no-items">No products in order O_o</div>
     }
   </div>
 </div>

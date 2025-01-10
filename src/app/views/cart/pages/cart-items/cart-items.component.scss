@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as v;
 
 .cart {
   display: grid;
@@ -13,8 +13,8 @@
     align-items: center;
     justify-items: start;
     text-transform: uppercase;
-    background-color: color(gray-50);
-    border: 1px solid color(gray-100);
+    background-color: v.color(gray-50);
+    border: 1px solid v.color(gray-100);
     border-left: none;
     border-right: none;
     padding: 0 1.5rem;

@@ -2,18 +2,24 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IProduct } from './products';
+import { IAddress } from './profile/profile.typings';
 
 export interface IOrderPayload {
   paymentMethod: PaymentMethod;
   paymentMethodId?: string;
   amount: number;
   currency: string;
+  billAddress?: Partial<IAddress> | null;
+  shipAddress?: Partial<IAddress> | null;
 }
 
 export interface IOrder {
   id: number;
   status: string;
   total: number;
+  billAddress: IAddress;
+  shipAddress: IAddress;
+  orderNotes?: string;
   createdAt: string;
 }
 

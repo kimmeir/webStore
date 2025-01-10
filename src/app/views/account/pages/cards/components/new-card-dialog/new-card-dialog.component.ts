@@ -1,20 +1,10 @@
 import { Component, inject } from '@angular/core';
-import {
-  LoginFormComponent
-} from '../../../../../../layouts/header/components/auth-dialog/forms/login-form/login-form.component';
-import { MatTab, MatTabGroup } from '@angular/material/tabs';
-import {
-  SignUpComponent
-} from '../../../../../../layouts/header/components/auth-dialog/forms/sign-up/sign-up.component';
 import { InfoBlockComponent } from '../../../../../../shared/components/info-block/info-block.component';
 import { MatIcon } from '@angular/material/icon';
 import { Stripe } from '@stripe/stripe-js';
 import { StripeService } from '../../../../../../services/requests/stripe.service';
 import { ProfileService } from '../../../../../../services/requests/profile/profile.service';
 import { ButtonComponent } from '../../../../../../shared/components/button/button.component';
-import { MatProgressSpinner } from '@angular/material/progress-spinner';
-import { LoadingComponent } from '../../../../../../shared/components/loading/loading.component';
-import { MatFormField, MatLabel } from '@angular/material/form-field';
 import { MatDialog } from '@angular/material/dialog';
 import { iif, of, switchMap, tap } from 'rxjs';
 import { NewCardFormComponent } from '../../../../../../shared/components/new-card-form/new-card-form.component';
@@ -23,17 +13,9 @@ import { NewCardFormComponent } from '../../../../../../shared/components/new-ca
   selector: 'app-new-card-dialog',
   standalone: true,
   imports: [
-    LoginFormComponent,
-    MatTab,
-    MatTabGroup,
-    SignUpComponent,
     InfoBlockComponent,
     MatIcon,
     ButtonComponent,
-    MatProgressSpinner,
-    LoadingComponent,
-    MatFormField,
-    MatLabel,
     NewCardFormComponent
   ],
   templateUrl: './new-card-dialog.component.html',

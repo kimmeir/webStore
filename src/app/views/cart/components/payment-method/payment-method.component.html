@@ -1,0 +1,18 @@
+<app-info-block>
+  <ng-container title>Payment Option</ng-container>
+  <mat-radio-group
+    class="choose-payment"
+    [value]="methodToPay()"
+    (change)="methodToPay.set($event.value)"
+  >
+    @for (method of paymentMethods(); track method.value) {
+      <mat-radio-button value="{{ method.value }}">{{ method.title }}</mat-radio-button>
+    }
+  </mat-radio-group>
+  @if (methodToPay() === 'new') {
+    <app-info-block>
+      <ng-container title>New Card</ng-container>
+      <app-new-card-form/>
+    </app-info-block>
+  }
+</app-info-block>

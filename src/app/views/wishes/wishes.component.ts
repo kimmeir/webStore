@@ -7,7 +7,6 @@ import { RouterLink } from '@angular/router';
 import { ButtonComponent } from '../../shared/components/button/button.component';
 import { cartActions } from '../../state/cart/cart.actions';
 import { IProduct } from '../../services/requests/products';
-import { MatIcon } from '@angular/material/icon';
 import { wishesActions } from '../../state/wishes/wishes.actions';
 
 @Component({
@@ -20,7 +19,6 @@ import { wishesActions } from '../../state/wishes/wishes.actions';
     NgIf,
     RouterLink,
     ButtonComponent,
-    MatIcon
   ],
   templateUrl: './wishes.component.html',
   styleUrl: './wishes.component.scss'

@@ -2,9 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICartItem } from '../../../../services/requests/cart.service';
 import { CurrencyPipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
-import { MatIconButton } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -13,9 +11,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CurrencyPipe,
     MatIcon,
-    MatIconButton,
     RouterLink,
-    InputNumberModule,
     FormsModule
   ],
   templateUrl: './cart-item.component.html',
@@ -34,7 +30,8 @@ export class CartItemComponent {
   updateQuantity(event: Event) {
     event.stopPropagation();
     const target = event.target as HTMLInputElement;
+    if (+target.value <= 0) target.value = '1';
+
     this.onChangeQuantity.emit({ id: this.item.id, quantity: +target.value });
-    console.log('update quantity', target.value);
   }
 }

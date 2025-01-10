@@ -1,4 +1,4 @@
-@import "variables";
+@use "variables" as v;
 
 .list {
   margin: 0 -1.5rem;
@@ -8,8 +8,8 @@
     align-items: center;
     justify-items: start;
     text-transform: uppercase;
-    background-color: color(gray-50);
-    border: 1px solid color(gray-100);
+    background-color: v.color(gray-50);
+    border: 1px solid v.color(gray-100);
     border-left: none;
     border-right: none;
     padding: 0 1.5rem;
@@ -21,7 +21,7 @@
     align-items: center;
 
     &:not(:last-child) {
-      border-bottom: 1px solid color(gray-100);
+      border-bottom: 1px solid v.color(gray-100);
     }
 
     &-product {
@@ -36,7 +36,7 @@
       }
 
       .title {
-        color: color(secondary-500);
+        color: v.color(secondary-500);
         text-transform: uppercase;
         cursor: pointer;
       }

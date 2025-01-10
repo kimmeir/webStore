@@ -1,13 +1,16 @@
-@import "variables";
-@import "theme/fonts";
+@use "variables" as v;
+@use "theme/fonts" as fonts;
 
 html, body {
   height: 100%;
 }
 
+*:not(mat-icon) {
+  font-family: 'Public Sans', sans-serif !important;
+}
+
 body {
   margin: 0;
-  font-family: 'Public Sans', sans-serif !important;
   font-size: 16px;
 }
 
@@ -44,14 +47,14 @@ body {
 
 .mat-badge-content {
   --mat-badge-legacy-container-size: unset;
-  background-color: color(primary-500) !important;
+  background-color: v.color(primary-500) !important;
 }
 
 .mat-mdc-dialog-container {
   --mdc-dialog-container-shape: 0;
 }
 
-@include addFont(text-display, $display-fonts);
-@include addFont(text-heading, $headings-fonts);
-@include addFont(text-label, $label-fonts);
-@include addBodyFont(text-body, $body-fonts);
+@include fonts.addFont(text-display, fonts.$display-fonts);
+@include fonts.addFont(text-heading, fonts.$headings-fonts);
+@include fonts.addFont(text-label, fonts.$label-fonts);
+@include fonts.addBodyFont(text-body, fonts.$body-fonts);

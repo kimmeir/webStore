@@ -16,4 +16,19 @@
     </div>
     <app-order-items [orderItems]="orderItems"/>
   </div>
+  <div class="order-footer">
+    <app-address-info
+      title="Billing Address"
+      [address]="order.billAddress"
+    />
+    <app-address-info
+      title="Shipping Address"
+      [address]="order.shipAddress"
+    />
+    <div class="order-footer-notes">
+      <span class="heading text-body-l-500">Order Notes</span>
+      <span class="text-body-s-400">{{ order.orderNotes ?? 'There no any notes...' }}</span>
+    </div>
+
+  </div>
 </app-info-block>

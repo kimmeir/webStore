@@ -12,13 +12,12 @@ import * as profileEffect from './state/profile/profile.effects';
 import * as cartEffect from './state/cart/cart.effects';
 import * as wishesEffect from './state/wishes/wishes.effects';
 import { appState } from './state/app.state';
-// import { provideApollo } from 'apollo-angular';
-// import { createHttpLink, InMemoryCache } from '@apollo/client/core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), provideAnimationsAsync(),
+    provideRouter(routes),
+    provideAnimationsAsync(),
     provideHttpClient(withInterceptors([baseUrlInterceptor, errorHandlerInterceptor, jwtInterceptor, loaderInterceptor])),
     provideStore(appState),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),

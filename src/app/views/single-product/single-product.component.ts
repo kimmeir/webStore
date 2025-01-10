@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CurrencyPipe, JsonPipe, NgOptimizedImage } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, NgIf } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { IProduct, ProductsService } from '../../services/requests/products';
-import { GalleriaModule } from 'primeng/galleria';
 import { Observable } from 'rxjs';
 import { cartActions } from '../../state/cart/cart.actions';
 import { Store } from '@ngrx/store';
@@ -14,11 +13,10 @@ import { Store } from '@ngrx/store';
   templateUrl: './single-product.component.html',
   styleUrl: './single-product.component.scss',
   imports: [
-    JsonPipe,
     CurrencyPipe,
     MatButton,
-    GalleriaModule,
-    NgOptimizedImage
+    NgIf,
+    AsyncPipe,
   ],
 })
 export class SingleProductComponent {

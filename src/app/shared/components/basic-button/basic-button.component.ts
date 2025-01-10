@@ -1,15 +1,8 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { MatButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'button[basic-button]',
   standalone: true,
-  imports: [
-    MatButton,
-    MatIcon
-  ],
-
   templateUrl: './basic-button.component.html',
   styleUrl: './basic-button.component.scss'
 })

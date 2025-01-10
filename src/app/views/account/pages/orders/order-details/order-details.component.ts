@@ -2,23 +2,22 @@ import { Component } from '@angular/core';
 import { InfoBlockComponent } from '../../../../../shared/components/info-block/info-block.component';
 import { IOrder, IOrderItem, OrderService } from '../../../../../services/requests/order.service';
 import { ActivatedRoute } from '@angular/router';
-import { AsyncPipe, CurrencyPipe, DatePipe, JsonPipe, NgIf } from '@angular/common';
-import { OrderItemsComponent } from './components/order-items/order-items.component';
+import { CurrencyPipe, DatePipe } from '@angular/common';
+import { OrderItemsComponent } from '../components/order-items/order-items.component';
+import { AddressInfoComponent } from '../../../../../shared/components/address-info/address-info.component';
 
 @Component({
   selector: 'app-order-details',
   standalone: true,
   imports: [
     InfoBlockComponent,
-    AsyncPipe,
-    NgIf,
-    JsonPipe,
     CurrencyPipe,
     DatePipe,
-    OrderItemsComponent
+    OrderItemsComponent,
+    AddressInfoComponent,
   ],
   templateUrl: './order-details.component.html',
-  styleUrl: './order-details.component.scss'
+  styleUrl: './order-details.component.scss',
 })
 export class OrderDetailsComponent {
   order!: IOrder;

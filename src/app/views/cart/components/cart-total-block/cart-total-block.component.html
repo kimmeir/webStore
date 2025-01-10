@@ -7,13 +7,10 @@
     </div>
     <app-button
       [block]="true"
-      [disabled]="totalButtons()[router.url].isDisabled === undefined
-        ? !(cart$ | async)?.length
-        : !totalButtons()[router.url].isDisabled
-"
-      (click)="totalButtons()[router.url].onClick()"
+      [disabled]="isButtonDisabled"
+      (click)="onClick.emit()"
     >
-      {{ totalButtons()[router.url].text }}
+      {{ buttonText }}
       <mat-icon>arrow_forward</mat-icon>
     </app-button>
   </app-info-block>

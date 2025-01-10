@@ -13,7 +13,7 @@
       </button>
     </ng-container>
     @if (cards()) {
-      <div class="cards">
+      <div class="payment-methods-cards">
         @for (card of cards(); track card.id) {
           <app-bank-card
             [cardItem]="card"
@@ -25,4 +25,14 @@
       <div class="text-heading-1">No payment methods added</div>
     }
   </app-info-block>
+  <div class="payment-methods-addresses">
+    <app-address-block
+      title="Billing address"
+      [address]="user()?.billAddress"
+    />
+    <app-address-block
+      title="Shipping address"
+      [address]="user()?.shipAddress"
+    />
+  </div>
 </div>

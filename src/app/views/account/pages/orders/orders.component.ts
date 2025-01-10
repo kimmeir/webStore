@@ -3,7 +3,7 @@ import { InfoBlockComponent } from '../../../../shared/components/info-block/inf
 import { MatTableModule } from '@angular/material/table';
 import { IOrder, OrderService } from '../../../../services/requests/order.service';
 import { Observable } from 'rxjs';
-import { AsyncPipe, CurrencyPipe, DatePipe, JsonPipe, NgIf } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, DatePipe, NgIf } from '@angular/common';
 import { BasicButtonComponent } from '../../../../shared/components/basic-button/basic-button.component';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -14,7 +14,6 @@ import { RouterLink } from '@angular/router';
   imports: [
     InfoBlockComponent,
     AsyncPipe,
-    JsonPipe,
     MatTableModule,
     NgIf,
     CurrencyPipe,

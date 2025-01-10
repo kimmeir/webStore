@@ -1,9 +1,9 @@
-@import 'variables';
+@use 'variables' as v;
 
 :host-context(.active) {
   .icon-button {
-    background-color: color(primary-500);
-    color: color(white);
+    background-color: v.color(primary-500);
+    color: v.color(white);
   }
 }
 
@@ -15,13 +15,13 @@
   border-radius: 50%;
   border: none;
   transition: all 0.3s;
-  color: color(gray-900);
+  color: v.color(gray-900);
   width: 3rem;
   height: 3rem;
 
   &:hover {
-    background-color: color(primary-500);
-    color: color(white);
+    background-color: v.color(primary-500);
+    color: v.color(white);
   }
 
   &-icon {

@@ -1,20 +1,7 @@
 .checkout {
   display: grid;
-  grid-template: repeat(2, 1fr) / repeat(4, 1fr);
-  gap: 1rem;
-  flex-direction: column;
-
-  mat-form-field:first-child {
-    grid-column: 1 / span 2;
-  }
-
-  mat-form-field:nth-child(2) {
-    grid-column: 3 / span 2;
-  }
-
-  mat-form-field:nth-child(3) {
-    grid-column: 1 / span 2;
-  }
+  gap: 2rem;
+  grid-template-columns: 1fr minmax(300px, 450px);
 }
 
 .choose-payment {

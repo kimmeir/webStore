@@ -1,0 +1,24 @@
+<div class="address-info">
+  <span
+    *ngIf="title"
+    class="heading text-body-l-500"
+  >{{ title }}</span>
+  @if (address) {
+    <span class="heading text-body-s-500">
+    {{ address.first_name }} {{ address.last_name }}
+  </span>
+    <span class="text-body-s-400">
+    {{ address.street }} {{ address.city }} {{ address.state }} {{ address.zip }}
+  </span>
+    <span class="text-body-s-400">
+    <span class="heading">Phone number: </span>
+    <span>{{ address.phone }}</span>
+  </span>
+    <span class="text-body-s-400">
+    <span class="heading">Email: </span>
+    <span>{{ address.email }}</span>
+  </span>
+  } @else {
+    <span>There no information about address.</span>
+  }
+</div>

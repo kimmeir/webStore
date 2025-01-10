@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ILoginForm, IToken, IUser } from './profile.typings';
+import { IAddress, ILoginForm, IToken, IUser } from './profile.typings';
 import { Observable, tap } from 'rxjs';
 import { TokenService } from '../../token.service';
 import { StripeService } from '../stripe.service';
@@ -47,7 +47,7 @@ export class ProfileService {
     return this.http.put<IUser>('/profile', user)
   }
 
-  updateAddress(type: addressType, address: any) {
-    return this.http.put('/update-address', { type, ...address })
+  updateAddress(type: addressType, address: IAddress): Observable<IUser> {
+    return this.http.put<IUser>('/update-address', { type, ...address })
   }
 }

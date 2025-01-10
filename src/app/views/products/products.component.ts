@@ -1,9 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { MatProgressBar } from '@angular/material/progress-bar';
 import { Router } from '@angular/router';
-import { CardComponent } from '../../shared/components/card/card.component';
 import { IProduct, ProductsService } from '../../services/requests/products';
-import { AsyncPipe, JsonPipe, NgIf } from '@angular/common';
 import { Store } from '@ngrx/store';
 import { cartActions } from '../../state/cart/cart.actions';
 import { ProductCardComponent } from './components/product-card/product-card.component';
@@ -19,12 +16,7 @@ import { IWishItem } from '../../services/requests/wishes.service';
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',
   imports: [
-    MatProgressBar,
-    CardComponent,
-    AsyncPipe,
     ProductCardComponent,
-    NgIf,
-    JsonPipe,
   ],
   standalone: true
 })
